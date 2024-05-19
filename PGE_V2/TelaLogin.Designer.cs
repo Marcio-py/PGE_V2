@@ -33,6 +33,7 @@
             textLogin = new TextBox();
             TextSenha = new TextBox();
             button1 = new Button();
+            button2 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -76,7 +77,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(355, 402);
+            button1.Location = new Point(322, 404);
             button1.Margin = new Padding(4, 3, 4, 3);
             button1.Name = "button1";
             button1.Size = new Size(88, 27);
@@ -85,11 +86,23 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // button2
+            // 
+            button2.Location = new Point(484, 404);
+            button2.Margin = new Padding(4, 3, 4, 3);
+            button2.Name = "button2";
+            button2.Size = new Size(88, 27);
+            button2.TabIndex = 5;
+            button2.Text = "Registrar";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // TelaLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(933, 519);
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(TextSenha);
             Controls.Add(textLogin);
@@ -109,5 +122,6 @@
         private System.Windows.Forms.TextBox textLogin;
         private System.Windows.Forms.TextBox TextSenha;
         private System.Windows.Forms.Button button1;
+        private Button button2;
     }
 }

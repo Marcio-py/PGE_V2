@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            button1 = new Button();
             btn_Detalhes = new Button();
             btn_detencao = new Button();
             panel2 = new Panel();
@@ -40,6 +41,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(btn_Detalhes);
             panel1.Controls.Add(btn_detencao);
             panel1.Dock = DockStyle.Left;
@@ -47,6 +49,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(173, 544);
             panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(3, 224);
+            button1.Name = "button1";
+            button1.Size = new Size(131, 45);
+            button1.TabIndex = 3;
+            button1.Text = "Sair";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // btn_Detalhes
             // 
@@ -83,6 +95,7 @@
             cdU_DetalhesDetencao1.Name = "cdU_DetalhesDetencao1";
             cdU_DetalhesDetencao1.Size = new Size(709, 483);
             cdU_DetalhesDetencao1.TabIndex = 1;
+            cdU_DetalhesDetencao1.Load += cdU_DetalhesDetencao1_Load;
             // 
             // cdU_NovaDetencao1
             // 
@@ -113,5 +126,6 @@
         private Panel panel2;
         private CDU_NovaDetencao cdU_NovaDetencao1;
         private CDU_DetalhesDetencao cdU_DetalhesDetencao1;
+        private Button button1;
     }
 }

@@ -77,5 +77,12 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+                this.Hide();
+                Tela_CriaConta Registro = new Tela_CriaConta();
+                Registro.ShowDialog();  
+        }
     }
 }

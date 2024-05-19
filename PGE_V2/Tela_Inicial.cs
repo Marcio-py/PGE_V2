@@ -16,6 +16,8 @@ namespace PGE_V2
         public Tela_Inicial()
         {
             InitializeComponent();
+            cdU_DetalhesDetencao1.Hide();
+            cdU_NovaDetencao1.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,6 +36,18 @@ namespace PGE_V2
             // Mostrar CDU (CAMPO DE USUARIO)
             cdU_DetalhesDetencao1.Show();
             cdU_DetalhesDetencao1.BringToFront();
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            TelaLogin Login = new TelaLogin();
+            Login.ShowDialog();
+        }
+
+        private void cdU_DetalhesDetencao1_Load(object sender, EventArgs e)
+        {
 
         }
     }
