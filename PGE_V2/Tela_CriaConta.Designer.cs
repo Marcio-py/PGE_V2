@@ -50,10 +50,14 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(233, 213);
+            textBox1.BackColor = Color.FromArgb(224, 224, 224);
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Location = new Point(303, 234);
+            textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
+            textBox1.Size = new Size(218, 23);
             textBox1.TabIndex = 1;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
@@ -75,10 +79,14 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(233, 162);
+            textBox2.BackColor = Color.FromArgb(224, 224, 224);
+            textBox2.BorderStyle = BorderStyle.None;
+            textBox2.Location = new Point(303, 183);
+            textBox2.Multiline = true;
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
+            textBox2.Size = new Size(218, 23);
             textBox2.TabIndex = 4;
+            //textBox2.TextChanged += this.textBox2_TextChanged;
             // 
             // button2
             // 
@@ -101,15 +109,20 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(233, 113);
+            textBox3.BackColor = Color.FromArgb(224, 224, 224);
+            textBox3.BorderStyle = BorderStyle.None;
+            textBox3.Location = new Point(303, 134);
+            textBox3.Multiline = true;
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
+            textBox3.Size = new Size(218, 23);
             textBox3.TabIndex = 7;
+            //textBox3.TextChanged += this.textBox3_TextChanged;
             // 
             // Tela_CriaConta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Teal;
             ClientSize = new Size(710, 450);
             Controls.Add(textBox3);
             Controls.Add(label3);

@@ -70,6 +70,8 @@
             groupBox.Controls.Add(label_filho_de);
             groupBox.Controls.Add(text_nome);
             groupBox.Controls.Add(lbl_nome);
+            groupBox.Font = new Font("Calibri", 9.75F, FontStyle.Bold);
+            groupBox.ForeColor = Color.White;
             groupBox.Location = new Point(14, 37);
             groupBox.Margin = new Padding(4, 3, 4, 3);
             groupBox.Name = "groupBox";
@@ -82,15 +84,20 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Calibri", 9.75F, FontStyle.Bold);
+            label3.ForeColor = Color.White;
             label3.Location = new Point(26, 141);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(112, 15);
+            label3.Size = new Size(114, 15);
             label3.TabIndex = 30;
             label3.Text = "Tipo de Documento";
             // 
             // cmbTipoDocumento
             // 
+            cmbTipoDocumento.BackColor = Color.FromArgb(224, 224, 224);
+            cmbTipoDocumento.Font = new Font("Calibri", 9.75F);
+            cmbTipoDocumento.ForeColor = Color.Black;
             cmbTipoDocumento.FormattingEnabled = true;
             cmbTipoDocumento.Location = new Point(161, 136);
             cmbTipoDocumento.Margin = new Padding(4, 3, 4, 3);
@@ -100,6 +107,9 @@
             // 
             // comboBoxGenero
             // 
+            comboBoxGenero.BackColor = Color.FromArgb(224, 224, 224);
+            comboBoxGenero.Font = new Font("Calibri", 9.75F);
+            comboBoxGenero.ForeColor = Color.Black;
             comboBoxGenero.FormattingEnabled = true;
             comboBoxGenero.Items.AddRange(new object[] { "Masculino", "Feminino" });
             comboBoxGenero.Location = new Point(686, 97);
@@ -110,6 +120,10 @@
             // 
             // text_num_Bi
             // 
+            text_num_Bi.BackColor = Color.FromArgb(224, 224, 224);
+            text_num_Bi.BorderStyle = BorderStyle.None;
+            text_num_Bi.Font = new Font("Calibri", 9.75F);
+            text_num_Bi.ForeColor = Color.Black;
             text_num_Bi.Location = new Point(433, 141);
             text_num_Bi.Margin = new Padding(2);
             text_num_Bi.Multiline = true;
@@ -120,25 +134,33 @@
             // lbl_num_Bi
             // 
             lbl_num_Bi.AutoSize = true;
+            lbl_num_Bi.Font = new Font("Calibri", 9.75F, FontStyle.Bold);
+            lbl_num_Bi.ForeColor = Color.White;
             lbl_num_Bi.Location = new Point(376, 145);
             lbl_num_Bi.Margin = new Padding(2, 0, 2, 0);
             lbl_num_Bi.Name = "lbl_num_Bi";
-            lbl_num_Bi.Size = new Size(51, 15);
+            lbl_num_Bi.Size = new Size(52, 15);
             lbl_num_Bi.TabIndex = 24;
             lbl_num_Bi.Text = "Nº do BI";
             // 
             // label_genero
             // 
             label_genero.AutoSize = true;
+            label_genero.Font = new Font("Calibri", 9.75F, FontStyle.Bold);
+            label_genero.ForeColor = Color.White;
             label_genero.Location = new Point(632, 97);
             label_genero.Margin = new Padding(2, 0, 2, 0);
             label_genero.Name = "label_genero";
-            label_genero.Size = new Size(45, 15);
+            label_genero.Size = new Size(48, 15);
             label_genero.TabIndex = 23;
             label_genero.Text = "Genero";
             // 
             // textBox3
             // 
+            textBox3.BackColor = Color.FromArgb(224, 224, 224);
+            textBox3.BorderStyle = BorderStyle.None;
+            textBox3.Font = new Font("Calibri", 9.75F);
+            textBox3.ForeColor = Color.Black;
             textBox3.Location = new Point(525, 44);
             textBox3.Margin = new Padding(2);
             textBox3.Multiline = true;
@@ -149,15 +171,21 @@
             // label_data_nasc
             // 
             label_data_nasc.AutoSize = true;
+            label_data_nasc.Font = new Font("Calibri", 9.75F, FontStyle.Bold);
+            label_data_nasc.ForeColor = Color.White;
             label_data_nasc.Location = new Point(392, 46);
             label_data_nasc.Margin = new Padding(2, 0, 2, 0);
             label_data_nasc.Name = "label_data_nasc";
-            label_data_nasc.Size = new Size(112, 15);
+            label_data_nasc.Size = new Size(115, 15);
             label_data_nasc.TabIndex = 21;
             label_data_nasc.Text = "Data de nascimento";
             // 
             // textBox2
             // 
+            textBox2.BackColor = Color.FromArgb(224, 224, 224);
+            textBox2.BorderStyle = BorderStyle.None;
+            textBox2.Font = new Font("Calibri", 9.75F);
+            textBox2.ForeColor = Color.Black;
             textBox2.Location = new Point(433, 92);
             textBox2.Margin = new Padding(2);
             textBox2.Multiline = true;
@@ -168,15 +196,21 @@
             // label_e_de
             // 
             label_e_de.AutoSize = true;
+            label_e_de.Font = new Font("Calibri", 9.75F, FontStyle.Bold);
+            label_e_de.ForeColor = Color.White;
             label_e_de.Location = new Point(392, 92);
             label_e_de.Margin = new Padding(2, 0, 2, 0);
             label_e_de.Name = "label_e_de";
-            label_e_de.Size = new Size(32, 15);
+            label_e_de.Size = new Size(33, 15);
             label_e_de.TabIndex = 19;
             label_e_de.Text = "E de ";
             // 
             // textBox1
             // 
+            textBox1.BackColor = Color.FromArgb(224, 224, 224);
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Font = new Font("Calibri", 9.75F);
+            textBox1.ForeColor = Color.Black;
             textBox1.Location = new Point(86, 96);
             textBox1.Margin = new Padding(2);
             textBox1.Multiline = true;
@@ -187,15 +221,21 @@
             // label_filho_de
             // 
             label_filho_de.AutoSize = true;
+            label_filho_de.Font = new Font("Calibri", 9.75F, FontStyle.Bold);
+            label_filho_de.ForeColor = Color.White;
             label_filho_de.Location = new Point(26, 99);
             label_filho_de.Margin = new Padding(2, 0, 2, 0);
             label_filho_de.Name = "label_filho_de";
-            label_filho_de.Size = new Size(52, 15);
+            label_filho_de.Size = new Size(53, 15);
             label_filho_de.TabIndex = 17;
             label_filho_de.Text = "Filho de ";
             // 
             // text_nome
             // 
+            text_nome.BackColor = Color.FromArgb(224, 224, 224);
+            text_nome.BorderStyle = BorderStyle.None;
+            text_nome.Font = new Font("Calibri", 9.75F);
+            text_nome.ForeColor = Color.Black;
             text_nome.Location = new Point(76, 44);
             text_nome.Margin = new Padding(2);
             text_nome.Multiline = true;
@@ -206,10 +246,12 @@
             // lbl_nome
             // 
             lbl_nome.AutoSize = true;
+            lbl_nome.Font = new Font("Calibri", 9.75F, FontStyle.Bold);
+            lbl_nome.ForeColor = Color.White;
             lbl_nome.Location = new Point(26, 46);
             lbl_nome.Margin = new Padding(2, 0, 2, 0);
             lbl_nome.Name = "lbl_nome";
-            lbl_nome.Size = new Size(40, 15);
+            lbl_nome.Size = new Size(41, 15);
             lbl_nome.TabIndex = 15;
             lbl_nome.Text = "Nome";
             // 
@@ -219,6 +261,8 @@
             Acusação.Controls.Add(label1);
             Acusação.Controls.Add(txtDetalhes);
             Acusação.Controls.Add(cmbTipo_Acusacoa);
+            Acusação.Font = new Font("Calibri", 9.75F, FontStyle.Bold);
+            Acusação.ForeColor = Color.White;
             Acusação.Location = new Point(14, 246);
             Acusação.Margin = new Padding(4, 3, 4, 3);
             Acusação.Name = "Acusação";
@@ -231,25 +275,33 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Calibri", 9.75F, FontStyle.Bold);
+            label2.ForeColor = Color.White;
             label2.Location = new Point(292, 25);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(38, 15);
+            label2.Size = new Size(16, 15);
             label2.TabIndex = 28;
-            label2.Text = "label2";
+            label2.Text = "...";
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Calibri", 9.75F, FontStyle.Bold);
+            label1.ForeColor = Color.White;
             label1.Location = new Point(26, 27);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(100, 15);
+            label1.Size = new Size(99, 15);
             label1.TabIndex = 27;
             label1.Text = "Tipo de Acusação";
             // 
             // txtDetalhes
             // 
+            txtDetalhes.BackColor = Color.FromArgb(224, 224, 224);
+            txtDetalhes.BorderStyle = BorderStyle.None;
+            txtDetalhes.Font = new Font("Calibri", 9.75F);
+            txtDetalhes.ForeColor = Color.Black;
             txtDetalhes.Location = new Point(29, 93);
             txtDetalhes.Margin = new Padding(4, 3, 4, 3);
             txtDetalhes.Multiline = true;
@@ -259,6 +311,9 @@
             // 
             // cmbTipo_Acusacoa
             // 
+            cmbTipo_Acusacoa.BackColor = Color.FromArgb(224, 224, 224);
+            cmbTipo_Acusacoa.Font = new Font("Calibri", 9.75F);
+            cmbTipo_Acusacoa.ForeColor = Color.Black;
             cmbTipo_Acusacoa.FormattingEnabled = true;
             cmbTipo_Acusacoa.Location = new Point(29, 45);
             cmbTipo_Acusacoa.Margin = new Padding(4, 3, 4, 3);
@@ -292,11 +347,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Teal;
             ClientSize = new Size(933, 519);
             Controls.Add(button1);
             Controls.Add(btnSalvar);
             Controls.Add(Acusação);
             Controls.Add(groupBox);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Margin = new Padding(4, 3, 4, 3);
             Name = "Nova_Detencao";
             Text = "Nova_Detencao";
