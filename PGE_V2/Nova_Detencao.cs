@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             cmbTipoDocumento.DataSource = Buscar_Tipo_Documento();
             cmbTipoDocumento.DisplayMember = "Descricao_Tipo_Documento";
-            cmbTipoDocumento.ValueMember = "Nº_Tipo_Documento";
+            cmbTipoDocumento.ValueMember = "Nº_Documento";
 
             cmbTipo_Acusacoa.DataSource = Buscar_Tipo_Acusacao();
             cmbTipo_Acusacoa.DisplayMember = "Descricao_Tipo_Detencao";
@@ -36,7 +36,7 @@ namespace WindowsFormsApplication1
 
             conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
 
-            comando = new SqlCommand("SELECT Nº_Tipo_Documento,Descricao_Tipo_Documento FROM Tipo_Documento WHERE Estado = 1", conexao);
+            comando = new SqlCommand("SELECT Nº_Documento,Descricao_Tipo_Documento FROM Tipo_Documento WHERE Estado = 1", conexao);
             //comando.Connection = conexao;   
             //dr = comando.ExecuteReader();
             conexao.Open();
@@ -143,9 +143,10 @@ namespace WindowsFormsApplication1
                 conexao.Open();
                 comando.ExecuteNonQuery();
 
-                MessageBox.Show("Registado com Sucesso");
+                
                 BuscarId_DadosPessoais();
                 Registar_Acusacao();
+                MessageBox.Show("Registado com Sucesso");
             }
             catch (Exception ex)
             {
