@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            button3 = new Button();
+            button2 = new Button();
             button1 = new Button();
             btn_Detalhes = new Button();
             btn_detencao = new Button();
             panel2 = new Panel();
             cdU_DetalhesDetencao1 = new CDU_DetalhesDetencao();
             cdU_NovaDetencao1 = new CDU_NovaDetencao();
-            button2 = new Button();
-            button3 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -53,6 +53,30 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(173, 544);
             panel1.TabIndex = 0;
+            // 
+            // button3
+            // 
+            button3.BackgroundImageLayout = ImageLayout.None;
+            button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            button3.ForeColor = Color.Black;
+            button3.Location = new Point(23, 197);
+            button3.Name = "button3";
+            button3.Size = new Size(131, 45);
+            button3.TabIndex = 5;
+            button3.Text = "Multa";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.BackgroundImageLayout = ImageLayout.None;
+            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            button2.ForeColor = Color.Black;
+            button2.Location = new Point(23, 146);
+            button2.Name = "button2";
+            button2.Size = new Size(131, 45);
+            button2.TabIndex = 4;
+            button2.Text = "Apreensao";
+            button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -117,36 +141,12 @@
             cdU_NovaDetencao1.Size = new Size(694, 520);
             cdU_NovaDetencao1.TabIndex = 0;
             // 
-            // button2
-            // 
-            button2.BackgroundImageLayout = ImageLayout.None;
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button2.ForeColor = Color.Black;
-            button2.Location = new Point(23, 146);
-            button2.Name = "button2";
-            button2.Size = new Size(131, 45);
-            button2.TabIndex = 4;
-            button2.Text = "Apreensao";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.BackgroundImageLayout = ImageLayout.None;
-            button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button3.ForeColor = Color.Black;
-            button3.Location = new Point(23, 197);
-            button3.Name = "button3";
-            button3.Size = new Size(131, 45);
-            button3.TabIndex = 5;
-            button3.Text = "Multa";
-            button3.UseVisualStyleBackColor = true;
-            // 
             // Tela_Inicial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Teal;
-            ClientSize = new Size(900, 544);
+            ClientSize = new Size(1152, 544);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
