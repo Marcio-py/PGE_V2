@@ -18,6 +18,7 @@ namespace PGE_V2
             InitializeComponent();
             cdU_DetalhesDetencao1.Hide();
             cdU_NovaDetencao1.Hide();
+            cduApreensao1.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -49,6 +50,27 @@ namespace PGE_V2
         private void cdU_DetalhesDetencao1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_apreensao_Click(object sender, EventArgs e)
+        {
+            // Esconder CDU (CAMPO DE USUARIO)
+            cdU_NovaDetencao1.Hide();
+            cdU_DetalhesDetencao1.Hide();
+            // Mostrar CDU (CAMPO DE USUARIO)
+            cduApreensao1.Show();
+            cduApreensao1.BringToFront();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // Esconder CDU (CAMPO DE USUARIO)
+            cdU_NovaDetencao1.Hide();
+            cdU_DetalhesDetencao1.Hide();
+            cduApreensao1.Hide();
+            // Mostrar CDU (CAMPO DE USUARIO)
+            cdU_Multa1.Show();
+            cdU_Multa1.BringToFront();
         }
     }
 }

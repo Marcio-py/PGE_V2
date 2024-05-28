@@ -172,7 +172,7 @@
             Box_AP.Controls.Add(N_doc);
             Box_AP.Controls.Add(ID_login);
             Box_AP.Controls.Add(DataAP);
-            Box_AP.Location = new Point(125, 76);
+            Box_AP.Location = new Point(92, 78);
             Box_AP.Name = "Box_AP";
             Box_AP.Size = new Size(514, 267);
             Box_AP.TabIndex = 12;

@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             Box_AP = new GroupBox();
-            lista_box_ap = new GroupBox();
-            dataGridView1 = new DataGridView();
-            button3 = new Button();
             Validar_btn = new Button();
             button4 = new Button();
             button1 = new Button();
@@ -44,6 +41,9 @@
             N_doc = new TextBox();
             ID_login = new TextBox();
             DataAP = new TextBox();
+            lista_box_ap = new GroupBox();
+            dataGridView1 = new DataGridView();
+            button3 = new Button();
             menu_ap_btn = new Button();
             lista_ap_btn = new Button();
             Box_AP.SuspendLayout();
@@ -53,7 +53,6 @@
             // 
             // Box_AP
             // 
-            Box_AP.Controls.Add(lista_box_ap);
             Box_AP.Controls.Add(Validar_btn);
             Box_AP.Controls.Add(button4);
             Box_AP.Controls.Add(button1);
@@ -73,35 +72,6 @@
             Box_AP.TabStop = false;
             Box_AP.Text = "Menu de Apreensao";
             // 
-            // lista_box_ap
-            // 
-            lista_box_ap.Controls.Add(dataGridView1);
-            lista_box_ap.Controls.Add(button3);
-            lista_box_ap.Location = new Point(69, 54);
-            lista_box_ap.Name = "lista_box_ap";
-            lista_box_ap.Size = new Size(607, 291);
-            lista_box_ap.TabIndex = 14;
-            lista_box_ap.TabStop = false;
-            lista_box_ap.Text = "Lista de apreensoes";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(7, 22);
-            dataGridView1.Margin = new Padding(4, 3, 4, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(472, 252);
-            dataGridView1.TabIndex = 14;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(504, 22);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 11;
-            button3.Text = "Listar";
-            button3.UseVisualStyleBackColor = true;
-            // 
             // Validar_btn
             // 
             Validar_btn.Location = new Point(306, 80);
@@ -110,6 +80,7 @@
             Validar_btn.TabIndex = 14;
             Validar_btn.Text = "Validar";
             Validar_btn.UseVisualStyleBackColor = true;
+            Validar_btn.Click += Validar_btn_Click;
             // 
             // button4
             // 
@@ -119,6 +90,7 @@
             button4.TabIndex = 13;
             button4.Text = "Modificar";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button1
             // 
@@ -128,6 +100,7 @@
             button1.TabIndex = 9;
             button1.Text = "Deletar";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // Descricao
             // 
@@ -203,6 +176,36 @@
             DataAP.Size = new Size(100, 23);
             DataAP.TabIndex = 6;
             // 
+            // lista_box_ap
+            // 
+            lista_box_ap.Controls.Add(dataGridView1);
+            lista_box_ap.Controls.Add(button3);
+            lista_box_ap.Location = new Point(63, 51);
+            lista_box_ap.Name = "lista_box_ap";
+            lista_box_ap.Size = new Size(640, 291);
+            lista_box_ap.TabIndex = 14;
+            lista_box_ap.TabStop = false;
+            lista_box_ap.Text = "Lista de apreensoes";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(7, 22);
+            dataGridView1.Margin = new Padding(4, 3, 4, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(472, 252);
+            dataGridView1.TabIndex = 14;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(504, 22);
+            button3.Name = "button3";
+            button3.Size = new Size(75, 23);
+            button3.TabIndex = 11;
+            button3.Text = "Listar";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // menu_ap_btn
             // 
             menu_ap_btn.Location = new Point(123, 388);
@@ -211,6 +214,7 @@
             menu_ap_btn.TabIndex = 15;
             menu_ap_btn.Text = "Menu de apreensoens";
             menu_ap_btn.UseVisualStyleBackColor = true;
+            menu_ap_btn.Click += menu_ap_btn_Click;
             // 
             // lista_ap_btn
             // 
@@ -220,11 +224,13 @@
             lista_ap_btn.TabIndex = 16;
             lista_ap_btn.Text = "Lista de apreensoes";
             lista_ap_btn.UseVisualStyleBackColor = true;
+            lista_ap_btn.Click += lista_ap_btn_Click;
             // 
             // CDUApreensao
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(lista_box_ap);
             Controls.Add(lista_ap_btn);
             Controls.Add(menu_ap_btn);
             Controls.Add(Box_AP);
