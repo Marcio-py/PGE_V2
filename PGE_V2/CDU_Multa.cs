@@ -23,16 +23,16 @@ namespace PGE_V2
             InitializeComponent();
         }
 
-        public DataTable Registar_Acusacao()
+        public DataTable Registar_Multa()
         {
             DataTable dt = new DataTable();
 
             conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
-            strSQL = "INSERT INTO Multa (Id_Dados_Pessoais,Id_Login, Detalhes_Detecao) VALUES (@Id_Dados_Pessoais,@Id_Login, @Detalhes_Detecao)";
+            strSQL = "INSERT INTO Multa (Id_Login,Nº_Doc, Descricao_Multa) VALUES (@Id_Login,@Nº_Doc, @Descricao_Multa)";
             comando = new SqlCommand(strSQL, conexao);
 
-            comando.Parameters.AddWithValue("@Id_Dados_Pessoais", label2.Text);
-            comando.Parameters.AddWithValue("@Id_Login", 1);
+            comando.Parameters.AddWithValue("@Id_Login", text_idLogin.Text);
+            comando.Parameters.AddWithValue("@Nº_Doc", text_num_Bi.Text);
             comando.Parameters.AddWithValue("@Descricao_Multa", txtDetalhes.Text);
 
 
@@ -60,6 +60,7 @@ namespace PGE_V2
 
                 conexao.Open();
                 comando.ExecuteNonQuery();
+                Registar_Multa();
 
                 MessageBox.Show("Registado com Sucesso");
             }

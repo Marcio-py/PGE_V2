@@ -122,6 +122,28 @@ namespace PGE_V2
             conexao.Open();
             comando.ExecuteNonQuery();
 
+            conexao.Close();
+            return dt;
+        }
+
+        private DataTable salvar_tipo_documento(string textBox_Ndocumento, string textBox_descricao)
+        {
+            DataTable dt = new DataTable();
+
+            conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
+            strSQL = "INSERT INTO Tipo_Documento (Nº_Documento,Estado, Descricao_Tipo_Documento) VALUES (@Nº_Documento,@Estado, @Descricao_Tipo_Documento)";
+            comando = new SqlCommand(strSQL, conexao);
+
+            //comando.Parameters.AddWithValue("@Nº_Documento", label2.Text);
+            comando.Parameters.AddWithValue("@Nº_Documento", $"{textBox_Ndocumento}");
+            comando.Parameters.AddWithValue("@Estado", 1);
+            comando.Parameters.AddWithValue("@Descricao_Tipo_Documento", $"{textBox_descricao}");
+
+
+            conexao.Open();
+            comando.ExecuteNonQuery();
+
+            conexao.Close();
             return dt;
         }
 
@@ -162,6 +184,7 @@ namespace PGE_V2
                 MessageBox.Show("Registado com Sucesso");
                 BuscarId_DadosPessoais();
                 Registar_Acusacao();
+                salvar_tipo_documento(text_num_Bi.Text, cmbTipoDocumento.Text);
             }
             catch (Exception ex)
             {

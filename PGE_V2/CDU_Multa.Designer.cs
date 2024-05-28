@@ -43,12 +43,10 @@
             lbl_nome = new Label();
             Salvar = new Button();
             groupBox1 = new GroupBox();
-            label1 = new Label();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            label2 = new Label();
-            label3 = new Label();
             txtDetalhes = new TextBox();
+            label3 = new Label();
+            text_idLogin = new TextBox();
+            label1 = new Label();
             groupBox.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -205,9 +203,7 @@
             // 
             groupBox1.Controls.Add(txtDetalhes);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(textBox5);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(textBox4);
+            groupBox1.Controls.Add(text_idLogin);
             groupBox1.Controls.Add(label1);
             groupBox1.Location = new Point(38, 206);
             groupBox1.Name = "groupBox1";
@@ -216,43 +212,14 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados multa";
             // 
-            // label1
+            // txtDetalhes
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(13, 48);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(51, 15);
-            label1.TabIndex = 27;
-            label1.Text = "ID Login";
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(111, 42);
-            textBox4.Margin = new Padding(2);
-            textBox4.Multiline = true;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(193, 21);
-            textBox4.TabIndex = 27;
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(111, 76);
-            textBox5.Margin = new Padding(2);
-            textBox5.Multiline = true;
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(193, 21);
-            textBox5.TabIndex = 28;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(13, 80);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(87, 15);
-            label2.TabIndex = 29;
-            label2.Text = "Nº Documento";
+            txtDetalhes.Location = new Point(111, 119);
+            txtDetalhes.Margin = new Padding(4, 3, 4, 3);
+            txtDetalhes.Multiline = true;
+            txtDetalhes.Name = "txtDetalhes";
+            txtDetalhes.Size = new Size(393, 54);
+            txtDetalhes.TabIndex = 32;
             // 
             // label3
             // 
@@ -264,14 +231,24 @@
             label3.TabIndex = 31;
             label3.Text = "Descrição multa";
             // 
-            // txtDetalhes
+            // text_idLogin
             // 
-            txtDetalhes.Location = new Point(111, 119);
-            txtDetalhes.Margin = new Padding(4, 3, 4, 3);
-            txtDetalhes.Multiline = true;
-            txtDetalhes.Name = "txtDetalhes";
-            txtDetalhes.Size = new Size(393, 54);
-            txtDetalhes.TabIndex = 32;
+            text_idLogin.Location = new Point(111, 42);
+            text_idLogin.Margin = new Padding(2);
+            text_idLogin.Multiline = true;
+            text_idLogin.Name = "text_idLogin";
+            text_idLogin.Size = new Size(193, 21);
+            text_idLogin.TabIndex = 27;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(13, 48);
+            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(51, 15);
+            label1.TabIndex = 27;
+            label1.Text = "ID Login";
             // 
             // CDU_Multa
             // 
@@ -306,9 +283,7 @@
         private Label lbl_nome;
         private Button Salvar;
         private GroupBox groupBox1;
-        private TextBox textBox5;
-        private Label label2;
-        private TextBox textBox4;
+        private TextBox text_idLogin;
         private Label label1;
         private Label label3;
         private TextBox txtDetalhes;

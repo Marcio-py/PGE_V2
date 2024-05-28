@@ -35,7 +35,71 @@ namespace PGE_V2
             {
                 conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
 
-                SqlCommand cmd = new SqlCommand("consulta_detidos", conexao);
+                SqlCommand cmd = new SqlCommand("consulta_Detento_EDocumento", conexao);
+                cmd.CommandType = CommandType.StoredProcedure;
+                DataSet ds = new DataSet();
+
+                da = new SqlDataAdapter(cmd);
+
+                conexao.Open();
+
+                da.Fill(ds);
+
+                dataGridView1.DataSource = ds.Tables[0];
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexao.Close();
+                conexao = null;
+                comando = null;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
+
+                SqlCommand cmd = new SqlCommand("consulta_Apreensao_EDocumento", conexao);
+                cmd.CommandType = CommandType.StoredProcedure;
+                DataSet ds = new DataSet();
+
+                da = new SqlDataAdapter(cmd);
+
+                conexao.Open();
+
+                da.Fill(ds);
+
+                dataGridView1.DataSource = ds.Tables[0];
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexao.Close();
+                conexao = null;
+                comando = null;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
+
+                SqlCommand cmd = new SqlCommand("consulta_MultaDoCivil_EDocumento", conexao);
                 cmd.CommandType = CommandType.StoredProcedure;
                 DataSet ds = new DataSet();
 
