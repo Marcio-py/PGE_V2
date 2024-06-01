@@ -21,9 +21,8 @@ namespace PGE_V2
         public CDUApreensao()
         {
             InitializeComponent();
-            Box_AP.Visible = false;
-            lista_box_ap.Visible = false;
         }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -38,11 +37,20 @@ namespace PGE_V2
                 comando.Parameters.AddWithValue("@Descricao_Apreensao", Descricao.Text);
                 comando.Parameters.AddWithValue("@Data_Apreencao", DataAP.Text);
 
+                if(Verifica_Registo_DoCidadao(N_doc.Text) == false)
+                {
+                    return;
+                }
 
                 conexao.Open();
                 comando.ExecuteNonQuery();
 
-                MessageBox.Show("Registado com Sucesso");
+                //salvar_tipo_documento(N_doc.Text, label4.Text);
+                MessageBox.Show("Processo de apreensão registado com Sucesso");
+                DataAP.Text = "";
+                Descricao.Text = "";
+                N_doc.Text = "";
+                ID_login.Text = "";
             }
             catch (Exception ex)
             {
@@ -57,24 +65,29 @@ namespace PGE_V2
             }
         }
 
-        private void menu_ap_btn_Click(object sender, EventArgs e)
+        public bool Verifica_Registo_DoCidadao(string numeroBI)
         {
-            Box_AP.Visible = true;
-            lista_box_ap.Visible = false;
+            using (SqlConnection conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True;"))
+            {
+                conexao.Open();
+                string strSQL = "SELECT COUNT(*) FROM Tipo_Documento WHERE Nº_Documento = @Nº_Documento";
+                using (SqlCommand comando = new SqlCommand(strSQL, conexao))
+                {
+                    comando.Parameters.AddWithValue("@Nº_Documento", numeroBI);
+                    int count = (int)comando.ExecuteScalar();
 
-            dataGridView1.DataSource = null;
-            dataGridView1.Refresh();
-        }
-
-        private void lista_ap_btn_Click(object sender, EventArgs e)
-        {
-            Box_AP.Visible = false;
-            lista_box_ap.Visible = true;
-
-            DataAP.Text = "";
-            Descricao.Text = "";
-            N_doc.Text = "";
-            ID_login.Text = "";
+                    // Check if the count is greater than 0 (record exists)
+                    if (count > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Apreensão negada: O cívil não tem nenhum registo");
+                        return false;
+                    }
+                }
+            }
         }
 
         private void Validar_btn_Click(object sender, EventArgs e)
@@ -128,6 +141,10 @@ namespace PGE_V2
                 conexao.Open();
                 comando.ExecuteNonQuery();
                 MessageBox.Show("modificação feita com Sucesso");
+                DataAP.Text = "";
+                Descricao.Text = "";
+                N_doc.Text = "";
+                ID_login.Text = "";
             }
             catch (Exception ex)
             {
@@ -173,36 +190,5 @@ namespace PGE_V2
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
-
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Apreensao", conexao);
-                comando = new SqlCommand(strSQL, conexao);
-                DataSet ds = new DataSet();
-
-                da = new SqlDataAdapter(cmd);
-
-                conexao.Open();
-
-                da.Fill(ds);
-
-                dataGridView1.DataSource = ds.Tables[0];
-
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conexao.Close();
-                conexao = null;
-                comando = null;
-            }
-        }
     }
 }

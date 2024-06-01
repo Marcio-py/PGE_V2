@@ -99,5 +99,15 @@ namespace PGE_V2.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap whatsapp_image_2021_06_16_at_15_126388751160cb268c081bf_10_25_2 {
+            get {
+                object obj = ResourceManager.GetObject("whatsapp_image_2021-06-16_at_15_126388751160cb268c081bf.10.25_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

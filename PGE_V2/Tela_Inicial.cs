@@ -27,6 +27,22 @@ namespace PGE_V2
             cdU_DetalhesDetencao1.Hide();
             cdU_NovaDetencao1.Hide();
             cduApreensao1.Hide();
+            cdU_Multa1.Hide();
+            // Este
+            if (Usuario_ativo.Estado == 2)
+            {
+                Grupo_SIC.Visible = true;
+                Grupo_viacao.Visible = false;
+                cdU_DetalhesDetencao1.Hide();
+                cdU_NovaDetencao1.Hide();
+                cduApreensao1.Hide();
+                cdU_Multa1.Hide();
+            }
+            else
+            {
+                Grupo_SIC.Visible = false;
+            }
+
         }
 
         public DataTable salvar_tipo_documento(string textBox_Ndocumento, string textBox_descricao)
@@ -99,6 +115,21 @@ namespace PGE_V2
             // Mostrar CDU (CAMPO DE USUARIO)
             cdU_Multa1.Show();
             cdU_Multa1.BringToFront();
+        }
+
+        private void Tela_Inicial_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("As funcionalidades para SIC chegaram em breve", "Mensagem");
+        }
+
+        private void Grupo_viacao_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

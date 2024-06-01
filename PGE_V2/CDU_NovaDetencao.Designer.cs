@@ -49,6 +49,7 @@
             label1 = new Label();
             txtDetalhes = new TextBox();
             cmbTipo_Acusacoa = new ComboBox();
+            label4 = new Label();
             groupBox.SuspendLayout();
             Acusação.SuspendLayout();
             SuspendLayout();
@@ -120,12 +121,12 @@
             // lbl_num_Bi
             // 
             lbl_num_Bi.AutoSize = true;
-            lbl_num_Bi.Location = new Point(378, 115);
+            lbl_num_Bi.Location = new Point(324, 115);
             lbl_num_Bi.Margin = new Padding(2, 0, 2, 0);
             lbl_num_Bi.Name = "lbl_num_Bi";
-            lbl_num_Bi.Size = new Size(51, 15);
+            lbl_num_Bi.Size = new Size(87, 15);
             lbl_num_Bi.TabIndex = 24;
-            lbl_num_Bi.Text = "Nº do BI";
+            lbl_num_Bi.Text = "Nº Documento";
             // 
             // label_genero
             // 
@@ -217,6 +218,7 @@
             // 
             // Acusação
             // 
+            Acusação.Controls.Add(label4);
             Acusação.Controls.Add(btnSalvar);
             Acusação.Controls.Add(label2);
             Acusação.Controls.Add(label1);
@@ -245,12 +247,12 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(293, 25);
+            label2.Location = new Point(299, 45);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(38, 15);
+            label2.Size = new Size(103, 15);
             label2.TabIndex = 28;
-            label2.Text = "label2";
+            label2.Text = "ID dados pessoais:";
             // 
             // label1
             // 
@@ -264,7 +266,7 @@
             // 
             // txtDetalhes
             // 
-            txtDetalhes.Location = new Point(27, 87);
+            txtDetalhes.Location = new Point(27, 112);
             txtDetalhes.Margin = new Padding(4, 3, 4, 3);
             txtDetalhes.Multiline = true;
             txtDetalhes.Name = "txtDetalhes";
@@ -279,6 +281,16 @@
             cmbTipo_Acusacoa.Name = "cmbTipo_Acusacoa";
             cmbTipo_Acusacoa.Size = new Size(206, 23);
             cmbTipo_Acusacoa.TabIndex = 0;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(28, 87);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(120, 15);
+            label4.TabIndex = 30;
+            label4.Text = "Detalhes da acusação";
             // 
             // CDU_NovaDetencao
             // 
@@ -318,5 +330,6 @@
         private TextBox txtDetalhes;
         private ComboBox cmbTipo_Acusacoa;
         private Button btnSalvar;
+        private Label label4;
     }
 }

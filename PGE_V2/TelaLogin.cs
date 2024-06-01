@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
     {
         SqlConnection conexao;
         SqlCommand comando;
-        //SqlDataReader dr;
+        SqlDataReader dr;
 
         string strSQL;
 
@@ -55,6 +55,7 @@ namespace WindowsFormsApplication1
                     else
                     {
                         MessageBox.Show("Bem vindo! Clique no ok para avançar", "Mensagem");
+                        Usuario_ativo.Estado = (int)red["Estado"];
                         this.Hide();
                         Tela_Inicial telaIncial = new Tela_Inicial();
                         telaIncial.ShowDialog();

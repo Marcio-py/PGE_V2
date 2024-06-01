@@ -47,12 +47,16 @@
             label3 = new Label();
             text_idLogin = new TextBox();
             label1 = new Label();
+            cmbTipoDocumento = new ComboBox();
+            label2 = new Label();
             groupBox.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox
             // 
+            groupBox.Controls.Add(label2);
+            groupBox.Controls.Add(cmbTipoDocumento);
             groupBox.Controls.Add(comboBoxGenero);
             groupBox.Controls.Add(text_num_Bi);
             groupBox.Controls.Add(lbl_num_Bi);
@@ -69,7 +73,7 @@
             groupBox.Margin = new Padding(4, 3, 4, 3);
             groupBox.Name = "groupBox";
             groupBox.Padding = new Padding(4, 3, 4, 3);
-            groupBox.Size = new Size(661, 155);
+            groupBox.Size = new Size(661, 169);
             groupBox.TabIndex = 2;
             groupBox.TabStop = false;
             groupBox.Text = "Dados Pessoais";
@@ -86,7 +90,7 @@
             // 
             // text_num_Bi
             // 
-            text_num_Bi.Location = new Point(433, 109);
+            text_num_Bi.Location = new Point(433, 140);
             text_num_Bi.Margin = new Padding(2);
             text_num_Bi.Multiline = true;
             text_num_Bi.Name = "text_num_Bi";
@@ -96,7 +100,7 @@
             // lbl_num_Bi
             // 
             lbl_num_Bi.AutoSize = true;
-            lbl_num_Bi.Location = new Point(343, 115);
+            lbl_num_Bi.Location = new Point(343, 146);
             lbl_num_Bi.Margin = new Padding(2, 0, 2, 0);
             lbl_num_Bi.Name = "lbl_num_Bi";
             lbl_num_Bi.Size = new Size(87, 15);
@@ -250,6 +254,25 @@
             label1.TabIndex = 27;
             label1.Text = "ID Login";
             // 
+            // cmbTipoDocumento
+            // 
+            cmbTipoDocumento.FormattingEnabled = true;
+            cmbTipoDocumento.Location = new Point(433, 100);
+            cmbTipoDocumento.Margin = new Padding(4, 3, 4, 3);
+            cmbTipoDocumento.Name = "cmbTipoDocumento";
+            cmbTipoDocumento.Size = new Size(140, 23);
+            cmbTipoDocumento.TabIndex = 30;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(332, 103);
+            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(95, 15);
+            label2.TabIndex = 31;
+            label2.Text = "Tipo documento";
+            // 
             // CDU_Multa
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -287,5 +310,7 @@
         private Label label1;
         private Label label3;
         private TextBox txtDetalhes;
+        private Label label2;
+        private ComboBox cmbTipoDocumento;
     }
 }

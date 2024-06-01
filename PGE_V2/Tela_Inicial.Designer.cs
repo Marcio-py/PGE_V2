@@ -29,39 +29,88 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            Grupo_viacao = new GroupBox();
+            btn_detencao = new Button();
+            btn_Detalhes = new Button();
             button3 = new Button();
             btn_apreensao = new Button();
+            Grupo_SIC = new GroupBox();
+            button5 = new Button();
+            button4 = new Button();
+            button2 = new Button();
             button1 = new Button();
-            btn_Detalhes = new Button();
-            btn_detencao = new Button();
             panel2 = new Panel();
+            cdU_Multa1 = new CDU_Multa();
             cduApreensao1 = new CDUApreensao();
             cdU_DetalhesDetencao1 = new CDU_DetalhesDetencao();
             cdU_NovaDetencao1 = new CDU_NovaDetencao();
-            cdU_Multa1 = new CDU_Multa();
+            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
+            Grupo_viacao.SuspendLayout();
+            Grupo_SIC.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(button3);
-            panel1.Controls.Add(btn_apreensao);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(Grupo_viacao);
+            panel1.Controls.Add(Grupo_SIC);
             panel1.Controls.Add(button1);
-            panel1.Controls.Add(btn_Detalhes);
-            panel1.Controls.Add(btn_detencao);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(173, 544);
+            panel1.Size = new Size(173, 612);
             panel1.TabIndex = 0;
+            // 
+            // Grupo_viacao
+            // 
+            Grupo_viacao.Controls.Add(btn_detencao);
+            Grupo_viacao.Controls.Add(btn_Detalhes);
+            Grupo_viacao.Controls.Add(button3);
+            Grupo_viacao.Controls.Add(btn_apreensao);
+            Grupo_viacao.Font = new Font("Segoe UI Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Grupo_viacao.Location = new Point(12, 53);
+            Grupo_viacao.Name = "Grupo_viacao";
+            Grupo_viacao.Size = new Size(151, 264);
+            Grupo_viacao.TabIndex = 7;
+            Grupo_viacao.TabStop = false;
+            Grupo_viacao.Text = "Viação";
+            Grupo_viacao.Enter += Grupo_viacao_Enter;
+            // 
+            // btn_detencao
+            // 
+            btn_detencao.BackgroundImageLayout = ImageLayout.None;
+            btn_detencao.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btn_detencao.ForeColor = Color.Black;
+            btn_detencao.Location = new Point(11, 54);
+            btn_detencao.Name = "btn_detencao";
+            btn_detencao.Size = new Size(131, 45);
+            btn_detencao.TabIndex = 1;
+            btn_detencao.Text = "Detenção";
+            btn_detencao.UseVisualStyleBackColor = true;
+            btn_detencao.Click += button1_Click;
+            // 
+            // btn_Detalhes
+            // 
+            btn_Detalhes.BackgroundImageLayout = ImageLayout.None;
+            btn_Detalhes.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btn_Detalhes.ForeColor = Color.Black;
+            btn_Detalhes.Location = new Point(11, 105);
+            btn_Detalhes.Name = "btn_Detalhes";
+            btn_Detalhes.Size = new Size(131, 45);
+            btn_Detalhes.TabIndex = 2;
+            btn_Detalhes.Text = "Detalhes";
+            btn_Detalhes.UseVisualStyleBackColor = true;
+            btn_Detalhes.Click += button2_Click;
             // 
             // button3
             // 
             button3.BackgroundImageLayout = ImageLayout.None;
             button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button3.ForeColor = Color.Black;
-            button3.Location = new Point(23, 197);
+            button3.Location = new Point(11, 207);
             button3.Name = "button3";
             button3.Size = new Size(131, 45);
             button3.TabIndex = 5;
@@ -74,7 +123,7 @@
             btn_apreensao.BackgroundImageLayout = ImageLayout.None;
             btn_apreensao.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btn_apreensao.ForeColor = Color.Black;
-            btn_apreensao.Location = new Point(23, 146);
+            btn_apreensao.Location = new Point(11, 156);
             btn_apreensao.Name = "btn_apreensao";
             btn_apreensao.Size = new Size(131, 45);
             btn_apreensao.TabIndex = 4;
@@ -82,44 +131,59 @@
             btn_apreensao.UseVisualStyleBackColor = true;
             btn_apreensao.Click += btn_apreensao_Click;
             // 
+            // Grupo_SIC
+            // 
+            Grupo_SIC.Controls.Add(button5);
+            Grupo_SIC.Controls.Add(button4);
+            Grupo_SIC.Controls.Add(button2);
+            Grupo_SIC.Font = new Font("Segoe UI Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Grupo_SIC.Location = new Point(12, 323);
+            Grupo_SIC.Name = "Grupo_SIC";
+            Grupo_SIC.Size = new Size(151, 186);
+            Grupo_SIC.TabIndex = 6;
+            Grupo_SIC.TabStop = false;
+            Grupo_SIC.Text = "SIC";
+            // 
+            // button5
+            // 
+            button5.Location = new Point(11, 135);
+            button5.Name = "button5";
+            button5.Size = new Size(131, 39);
+            button5.TabIndex = 2;
+            button5.Text = "apreensão";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(11, 83);
+            button4.Name = "button4";
+            button4.Size = new Size(131, 39);
+            button4.TabIndex = 1;
+            button4.Text = "Investigação";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(11, 35);
+            button2.Name = "button2";
+            button2.Size = new Size(131, 39);
+            button2.TabIndex = 0;
+            button2.Text = "Operação";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
+            // 
             // button1
             // 
             button1.BackgroundImageLayout = ImageLayout.None;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button1.ForeColor = Color.Black;
-            button1.Location = new Point(23, 439);
+            button1.Location = new Point(12, 532);
             button1.Name = "button1";
             button1.Size = new Size(131, 45);
             button1.TabIndex = 3;
             button1.Text = "Sair";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click_1;
-            // 
-            // btn_Detalhes
-            // 
-            btn_Detalhes.BackgroundImageLayout = ImageLayout.None;
-            btn_Detalhes.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btn_Detalhes.ForeColor = Color.Black;
-            btn_Detalhes.Location = new Point(23, 95);
-            btn_Detalhes.Name = "btn_Detalhes";
-            btn_Detalhes.Size = new Size(131, 45);
-            btn_Detalhes.TabIndex = 2;
-            btn_Detalhes.Text = "Detalhes";
-            btn_Detalhes.UseVisualStyleBackColor = true;
-            btn_Detalhes.Click += button2_Click;
-            // 
-            // btn_detencao
-            // 
-            btn_detencao.BackgroundImageLayout = ImageLayout.None;
-            btn_detencao.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btn_detencao.ForeColor = Color.Black;
-            btn_detencao.Location = new Point(23, 44);
-            btn_detencao.Name = "btn_detencao";
-            btn_detencao.Size = new Size(131, 45);
-            btn_detencao.TabIndex = 1;
-            btn_detencao.Text = "Detenção";
-            btn_detencao.UseVisualStyleBackColor = true;
-            btn_detencao.Click += button1_Click;
             // 
             // panel2
             // 
@@ -131,6 +195,13 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(728, 532);
             panel2.TabIndex = 3;
+            // 
+            // cdU_Multa1
+            // 
+            cdU_Multa1.Location = new Point(0, 12);
+            cdU_Multa1.Name = "cdU_Multa1";
+            cdU_Multa1.Size = new Size(719, 431);
+            cdU_Multa1.TabIndex = 5;
             // 
             // cduApreensao1
             // 
@@ -154,26 +225,33 @@
             cdU_NovaDetencao1.Size = new Size(694, 520);
             cdU_NovaDetencao1.TabIndex = 0;
             // 
-            // cdU_Multa1
+            // pictureBox1
             // 
-            cdU_Multa1.Location = new Point(3, 22);
-            cdU_Multa1.Name = "cdU_Multa1";
-            cdU_Multa1.Size = new Size(733, 405);
-            cdU_Multa1.TabIndex = 5;
+            pictureBox1.Image = Properties.Resources.whatsapp_image_2021_06_16_at_15_126388751160cb268c081bf_10_25_2;
+            pictureBox1.Location = new Point(12, 8);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(151, 47);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
             // 
             // Tela_Inicial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Teal;
-            ClientSize = new Size(1152, 544);
+            ClientSize = new Size(1152, 612);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Name = "Tela_Inicial";
             Text = "Tela_Inicial";
+            Load += Tela_Inicial_Load;
             panel1.ResumeLayout(false);
+            Grupo_viacao.ResumeLayout(false);
+            Grupo_SIC.ResumeLayout(false);
             panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -190,5 +268,11 @@
         private Button btn_apreensao;
         private CDUApreensao cduApreensao1;
         private CDU_Multa cdU_Multa1;
+        private Button button4;
+        private Button button2;
+        public GroupBox Grupo_SIC;
+        public GroupBox Grupo_viacao;
+        private Button button5;
+        private PictureBox pictureBox1;
     }
 }

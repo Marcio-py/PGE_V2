@@ -35,6 +35,7 @@ namespace PGE_V2
             {
                 conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
 
+                // consulta_Detento_EDocumento é procedimento traz dados da tabela dados pessoais, tipo documento e detençao
                 SqlCommand cmd = new SqlCommand("consulta_Detento_EDocumento", conexao);
                 cmd.CommandType = CommandType.StoredProcedure;
                 DataSet ds = new DataSet();
