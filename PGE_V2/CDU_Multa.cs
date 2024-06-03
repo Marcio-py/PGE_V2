@@ -87,10 +87,10 @@ namespace PGE_V2
                 using (SqlCommand comando = new SqlCommand(strSQL, conexao))
                 {
                     comando.Parameters.AddWithValue("@Nº_BI", numeroBI);
-                    int count = (int)comando.ExecuteScalar();
+                    int total_deocorrencias = (int)comando.ExecuteScalar();
 
                     // Check if the count is greater than 0 (record exists)
-                    if (count > 0)
+                    if (total_deocorrencias > 0)
                     {
                         MessageBox.Show("Já existe alguém na base de dados com esse numero de docoumento");
                         return true;

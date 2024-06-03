@@ -37,7 +37,7 @@ namespace PGE_V2
                 comando.Parameters.AddWithValue("@Descricao_Apreensao", Descricao.Text);
                 comando.Parameters.AddWithValue("@Data_Apreencao", DataAP.Text);
 
-                if(Verifica_Registo_DoCidadao(N_doc.Text) == false)
+                if(Verifica_Registo_DoCidadao(N_doc.Text) == false || valida_campos_detencao() == false)
                 {
                     return;
                 }
@@ -90,39 +90,19 @@ namespace PGE_V2
             }
         }
 
-        private void Validar_btn_Click(object sender, EventArgs e)
+        public bool valida_campos_detencao()
         {
-            try
+            if (!string.IsNullOrEmpty(ID_login.Text) && !string.IsNullOrEmpty(N_doc.Text) &&
+               !string.IsNullOrEmpty(Descricao.Text))
             {
-                conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
-                strSQL = "SELECT * FROM Apreensao WHERE Nº_Documento = @Nº_Documento";
-                comando = new SqlCommand(strSQL, conexao);
-
-                comando.Parameters.AddWithValue("@Nº_Documento", N_doc.Text);
-
-                conexao.Open();
-                dr = comando.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    ID_login.Text = Convert.ToString(dr["Id_Login"]);
-                    N_doc.Text = Convert.ToString(dr["Nº_Documento"]);
-                    DataAP.Text = Convert.ToString(dr["Data_Apreencao"]);
-                    // DataAP.Text = (string)dr["Data_Apreencao"];
-                    Descricao.Text = (string)dr["Descricao_Apreensao"];
-                }
+                // MessageBox.Show("Campos preenchidos ");
+                return true;
 
             }
-            catch (Exception ex)
+            else
             {
-
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conexao.Close();
-                conexao = null;
-                comando = null;
+                MessageBox.Show("Por favor preencha os campos");
+                return false;
             }
         }
 

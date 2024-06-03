@@ -156,27 +156,27 @@
             // 
             // button5
             // 
-            button5.Location = new Point(11, 135);
+            button5.Location = new Point(2, 135);
             button5.Name = "button5";
-            button5.Size = new Size(131, 39);
+            button5.Size = new Size(150, 39);
             button5.TabIndex = 2;
-            button5.Text = "apreensão";
+            button5.Text = "Apreensão";
             button5.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            button4.Location = new Point(11, 83);
+            button4.Location = new Point(2, 83);
             button4.Name = "button4";
-            button4.Size = new Size(131, 39);
+            button4.Size = new Size(150, 39);
             button4.TabIndex = 1;
             button4.Text = "Investigação";
             button4.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            button2.Location = new Point(11, 35);
+            button2.Location = new Point(2, 35);
             button2.Name = "button2";
-            button2.Size = new Size(131, 39);
+            button2.Size = new Size(150, 39);
             button2.TabIndex = 0;
             button2.Text = "Operação";
             button2.UseVisualStyleBackColor = true;

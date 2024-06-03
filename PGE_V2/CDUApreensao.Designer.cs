@@ -82,7 +82,6 @@
             Validar_btn.TabIndex = 14;
             Validar_btn.Text = "Validar";
             Validar_btn.UseVisualStyleBackColor = true;
-            Validar_btn.Click += Validar_btn_Click;
             // 
             // modificar_btn
             // 
