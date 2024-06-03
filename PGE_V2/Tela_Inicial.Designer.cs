@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            pictureBox1 = new PictureBox();
             Grupo_viacao = new GroupBox();
             btn_detencao = new Button();
             btn_Detalhes = new Button();
@@ -44,12 +45,11 @@
             cduApreensao1 = new CDUApreensao();
             cdU_DetalhesDetencao1 = new CDU_DetalhesDetencao();
             cdU_NovaDetencao1 = new CDU_NovaDetencao();
-            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             Grupo_viacao.SuspendLayout();
             Grupo_SIC.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -64,6 +64,16 @@
             panel1.Size = new Size(173, 612);
             panel1.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.whatsapp_image_2021_06_16_at_15_126388751160cb268c081bf_10_25_2;
+            pictureBox1.Location = new Point(12, 8);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(151, 47);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
             // Grupo_viacao
             // 
             Grupo_viacao.Controls.Add(btn_detencao);
@@ -71,9 +81,9 @@
             Grupo_viacao.Controls.Add(button3);
             Grupo_viacao.Controls.Add(btn_apreensao);
             Grupo_viacao.Font = new Font("Segoe UI Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Grupo_viacao.Location = new Point(12, 53);
+            Grupo_viacao.Location = new Point(12, 86);
             Grupo_viacao.Name = "Grupo_viacao";
-            Grupo_viacao.Size = new Size(151, 264);
+            Grupo_viacao.Size = new Size(151, 219);
             Grupo_viacao.TabIndex = 7;
             Grupo_viacao.TabStop = false;
             Grupo_viacao.Text = "Viação";
@@ -86,7 +96,7 @@
             btn_detencao.ForeColor = Color.Black;
             btn_detencao.Location = new Point(11, 54);
             btn_detencao.Name = "btn_detencao";
-            btn_detencao.Size = new Size(131, 45);
+            btn_detencao.Size = new Size(131, 31);
             btn_detencao.TabIndex = 1;
             btn_detencao.Text = "Detenção";
             btn_detencao.UseVisualStyleBackColor = true;
@@ -97,9 +107,9 @@
             btn_Detalhes.BackgroundImageLayout = ImageLayout.None;
             btn_Detalhes.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btn_Detalhes.ForeColor = Color.Black;
-            btn_Detalhes.Location = new Point(11, 105);
+            btn_Detalhes.Location = new Point(11, 92);
             btn_Detalhes.Name = "btn_Detalhes";
-            btn_Detalhes.Size = new Size(131, 45);
+            btn_Detalhes.Size = new Size(131, 30);
             btn_Detalhes.TabIndex = 2;
             btn_Detalhes.Text = "Detalhes";
             btn_Detalhes.UseVisualStyleBackColor = true;
@@ -110,9 +120,9 @@
             button3.BackgroundImageLayout = ImageLayout.None;
             button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button3.ForeColor = Color.Black;
-            button3.Location = new Point(11, 207);
+            button3.Location = new Point(11, 162);
             button3.Name = "button3";
-            button3.Size = new Size(131, 45);
+            button3.Size = new Size(131, 29);
             button3.TabIndex = 5;
             button3.Text = "Multa";
             button3.UseVisualStyleBackColor = true;
@@ -123,9 +133,9 @@
             btn_apreensao.BackgroundImageLayout = ImageLayout.None;
             btn_apreensao.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btn_apreensao.ForeColor = Color.Black;
-            btn_apreensao.Location = new Point(11, 156);
+            btn_apreensao.Location = new Point(11, 128);
             btn_apreensao.Name = "btn_apreensao";
-            btn_apreensao.Size = new Size(131, 45);
+            btn_apreensao.Size = new Size(131, 28);
             btn_apreensao.TabIndex = 4;
             btn_apreensao.Text = "Apreensao";
             btn_apreensao.UseVisualStyleBackColor = true;
@@ -200,14 +210,14 @@
             // 
             cdU_Multa1.Location = new Point(0, 12);
             cdU_Multa1.Name = "cdU_Multa1";
-            cdU_Multa1.Size = new Size(719, 431);
+            cdU_Multa1.Size = new Size(719, 532);
             cdU_Multa1.TabIndex = 5;
             // 
             // cduApreensao1
             // 
             cduApreensao1.Location = new Point(0, 3);
             cduApreensao1.Name = "cduApreensao1";
-            cduApreensao1.Size = new Size(882, 526);
+            cduApreensao1.Size = new Size(751, 597);
             cduApreensao1.TabIndex = 4;
             // 
             // cdU_DetalhesDetencao1
@@ -225,22 +235,12 @@
             cdU_NovaDetencao1.Size = new Size(694, 520);
             cdU_NovaDetencao1.TabIndex = 0;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.whatsapp_image_2021_06_16_at_15_126388751160cb268c081bf_10_25_2;
-            pictureBox1.Location = new Point(12, 8);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(151, 47);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
-            // 
             // Tela_Inicial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Teal;
-            ClientSize = new Size(1152, 612);
+            ClientSize = new Size(942, 612);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
@@ -248,10 +248,10 @@
             Text = "Tela_Inicial";
             Load += Tela_Inicial_Load;
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             Grupo_viacao.ResumeLayout(false);
             Grupo_SIC.ResumeLayout(false);
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 

@@ -28,7 +28,7 @@ namespace PGE_V2
             cdU_NovaDetencao1.Hide();
             cduApreensao1.Hide();
             cdU_Multa1.Hide();
-            // Este
+            // Este o estado do usuario for 2 significa que pertence ao sic
             if (Usuario_ativo.Estado == 2)
             {
                 Grupo_SIC.Visible = true;

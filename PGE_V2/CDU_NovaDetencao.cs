@@ -64,6 +64,7 @@ namespace PGE_V2
             textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
+            txtDetalhes.Text = "";
             comboBoxGenero.Text = "";
         }
 
@@ -123,7 +124,7 @@ namespace PGE_V2
                     // Check if the count is greater than 0 (record exists)
                     if (count > 0)
                     {
-                        MessageBox.Show("Já existe um usuario na base de dados com esse numero de docoumento");
+                        MessageBox.Show("Já existe alguém na base de dados com esse numero de docoumento");
                         return true;
                     }
                     else

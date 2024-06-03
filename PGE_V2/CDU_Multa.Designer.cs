@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             groupBox = new GroupBox();
+            label2 = new Label();
+            cmbTipoDocumento = new ComboBox();
             comboBoxGenero = new ComboBox();
             text_num_Bi = new TextBox();
             lbl_num_Bi = new Label();
@@ -47,8 +49,6 @@
             label3 = new Label();
             text_idLogin = new TextBox();
             label1 = new Label();
-            cmbTipoDocumento = new ComboBox();
-            label2 = new Label();
             groupBox.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -77,6 +77,25 @@
             groupBox.TabIndex = 2;
             groupBox.TabStop = false;
             groupBox.Text = "Dados Pessoais";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(332, 103);
+            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(95, 15);
+            label2.TabIndex = 31;
+            label2.Text = "Tipo documento";
+            // 
+            // cmbTipoDocumento
+            // 
+            cmbTipoDocumento.FormattingEnabled = true;
+            cmbTipoDocumento.Location = new Point(433, 100);
+            cmbTipoDocumento.Margin = new Padding(4, 3, 4, 3);
+            cmbTipoDocumento.Name = "cmbTipoDocumento";
+            cmbTipoDocumento.Size = new Size(140, 23);
+            cmbTipoDocumento.TabIndex = 30;
             // 
             // comboBoxGenero
             // 
@@ -195,7 +214,7 @@
             // 
             // Salvar
             // 
-            Salvar.Location = new Point(624, 281);
+            Salvar.Location = new Point(624, 344);
             Salvar.Name = "Salvar";
             Salvar.Size = new Size(75, 23);
             Salvar.TabIndex = 3;
@@ -209,7 +228,7 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(text_idLogin);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(38, 206);
+            groupBox1.Location = new Point(38, 246);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(580, 196);
             groupBox1.TabIndex = 27;
@@ -218,7 +237,7 @@
             // 
             // txtDetalhes
             // 
-            txtDetalhes.Location = new Point(111, 119);
+            txtDetalhes.Location = new Point(111, 99);
             txtDetalhes.Margin = new Padding(4, 3, 4, 3);
             txtDetalhes.Multiline = true;
             txtDetalhes.Name = "txtDetalhes";
@@ -228,7 +247,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(5, 141);
+            label3.Location = new Point(5, 102);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(92, 15);
@@ -254,25 +273,6 @@
             label1.TabIndex = 27;
             label1.Text = "ID Login";
             // 
-            // cmbTipoDocumento
-            // 
-            cmbTipoDocumento.FormattingEnabled = true;
-            cmbTipoDocumento.Location = new Point(433, 100);
-            cmbTipoDocumento.Margin = new Padding(4, 3, 4, 3);
-            cmbTipoDocumento.Name = "cmbTipoDocumento";
-            cmbTipoDocumento.Size = new Size(140, 23);
-            cmbTipoDocumento.TabIndex = 30;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(332, 103);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(95, 15);
-            label2.TabIndex = 31;
-            label2.Text = "Tipo documento";
-            // 
             // CDU_Multa
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -281,7 +281,7 @@
             Controls.Add(Salvar);
             Controls.Add(groupBox);
             Name = "CDU_Multa";
-            Size = new Size(733, 405);
+            Size = new Size(733, 475);
             groupBox.ResumeLayout(false);
             groupBox.PerformLayout();
             groupBox1.ResumeLayout(false);
