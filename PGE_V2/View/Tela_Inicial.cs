@@ -9,6 +9,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PGE_V2.Dados;
 using WindowsFormsApplication1;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
