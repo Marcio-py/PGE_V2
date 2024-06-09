@@ -104,7 +104,7 @@ namespace PGE_V2
                 cmd.CommandType = CommandType.StoredProcedure;
                 DataSet ds = new DataSet();
 
-                da = new SqlDataAdapter(cmd);
+                da = new SqlDataAdapter(cmd); 
 
                 conexao.Open();
 

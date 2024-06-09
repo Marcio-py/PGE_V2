@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PGE_V2.Controler;
+using PGE_V2.Dados;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -225,35 +227,29 @@ namespace PGE_V2
             return dt;
         }
 
-        private void label_filho_de_Click(object sender, EventArgs e)
+        private void Salvar_DadosPessoais()
         {
+            DBcontexto dBconecao = new DBcontexto();
+            strSQL = "INSERT INTO Dados_Pessoais (Nº_BI, Nome_Completo, Filho_de, E_de, Data_nasc, Genero) VALUES (@Nº_BI, @Nome_Completo, @Filho_de, @E_de, @Data_nasc, @Genero)";
+            comando = new SqlCommand(strSQL, conexao);
 
-        }
+            comando.Parameters.AddWithValue("@Nº_BI", text_num_Bi.Text);
+            comando.Parameters.AddWithValue("@Nome_Completo", text_nome.Text);
+            comando.Parameters.AddWithValue("@Filho_de", textBox1.Text);
+            comando.Parameters.AddWithValue("@e_de", textBox2.Text);
+            comando.Parameters.AddWithValue("@Data_nasc", textBox3.Text);
+            comando.Parameters.AddWithValue("@genero", comboBoxGenero.Text);
 
-        private void label_e_de_Click(object sender, EventArgs e)
-        {
+            conexao.Open();
+            comando.ExecuteNonQuery();
 
-        }
-
-        private void text_num_Bi_TextChanged(object sender, EventArgs e)
-        {
-
+            conexao.Close();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             try
             {
-                conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
-                strSQL = "INSERT INTO Dados_Pessoais (Nº_BI, Nome_Completo, Filho_de, E_de, Data_nasc, Genero) VALUES (@Nº_BI, @Nome_Completo, @Filho_de, @E_de, @Data_nasc, @Genero)";
-                comando = new SqlCommand(strSQL, conexao);
-
-                comando.Parameters.AddWithValue("@Nº_BI", text_num_Bi.Text);
-                comando.Parameters.AddWithValue("@Nome_Completo", text_nome.Text);
-                comando.Parameters.AddWithValue("@Filho_de", textBox1.Text);
-                comando.Parameters.AddWithValue("@e_de", textBox2.Text);
-                comando.Parameters.AddWithValue("@Data_nasc", textBox3.Text);
-                comando.Parameters.AddWithValue("@genero", comboBoxGenero.Text);
 
                 // SE  a funçaovalida_campos_detencao for falso, significa que os campos estão vazios e cancela a operação
                 // SE  a funçao Verifica_SeExiste_NaBD retornar true,significa o nº documento já existe e cancela a operação
@@ -263,10 +259,13 @@ namespace PGE_V2
 
                 }
 
-                conexao.Open();
-                comando.ExecuteNonQuery();
+                UsuarioController.Salvar_DadosPessoais(
+                    int.Parse(text_num_Bi.Text), 
+                    text_nome.Text, textBox1.Text, 
+                    textBox2.Text, 
+                    textBox3.Text, 
+                    comboBoxGenero.Text);
 
-                
                 BuscarId_DadosPessoais();
                 Registar_Acusacao();
                 salvar_tipo_documento(text_num_Bi.Text, cmbTipoDocumento.Text);

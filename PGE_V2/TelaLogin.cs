@@ -86,14 +86,5 @@ namespace WindowsFormsApplication1
             Registro.ShowDialog();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TelaLogin_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

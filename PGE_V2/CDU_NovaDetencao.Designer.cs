@@ -116,7 +116,6 @@
             text_num_Bi.Name = "text_num_Bi";
             text_num_Bi.Size = new Size(193, 21);
             text_num_Bi.TabIndex = 25;
-            text_num_Bi.TextChanged += text_num_Bi_TextChanged;
             // 
             // lbl_num_Bi
             // 
@@ -175,7 +174,6 @@
             label_e_de.Size = new Size(32, 15);
             label_e_de.TabIndex = 19;
             label_e_de.Text = "E de ";
-            label_e_de.Click += label_e_de_Click;
             // 
             // textBox1
             // 
@@ -195,7 +193,6 @@
             label_filho_de.Size = new Size(52, 15);
             label_filho_de.TabIndex = 17;
             label_filho_de.Text = "Filho de ";
-            label_filho_de.Click += label_filho_de_Click;
             // 
             // text_nome
             // 
