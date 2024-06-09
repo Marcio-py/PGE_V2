@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PGE_V2.Controler;
+using PGE_V2.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -56,18 +58,17 @@ namespace PGE_V2
         {
             text_num_Bi.Text = "";
             text_nome.Text = "";
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
+            textFilhoDe.Text = "";
+            textEDe.Text = "";
+            textNascimento.Text = "";
             comboBoxGenero.Text = "";
         }
 
         public bool valida_campos_detencao()
         {
             if (!string.IsNullOrEmpty(text_nome.Text) && !string.IsNullOrEmpty(text_num_Bi.Text) &&
-               !string.IsNullOrEmpty(txtDetalhes.Text) && !string.IsNullOrEmpty(text_idLogin.Text))
+               !string.IsNullOrEmpty(txtDetalhes.Text))
             {
-                MessageBox.Show("Campos preenchidos ");
                 return true;
 
             }
@@ -87,10 +88,10 @@ namespace PGE_V2
                 using (SqlCommand comando = new SqlCommand(strSQL, conexao))
                 {
                     comando.Parameters.AddWithValue("@Nº_BI", numeroBI);
-                    int total_deocorrencias = (int)comando.ExecuteScalar();
+                    int count = (int)comando.ExecuteScalar();
 
                     // Check if the count is greater than 0 (record exists)
-                    if (total_deocorrencias > 0)
+                    if (count > 0)
                     {
                         MessageBox.Show("Já existe alguém na base de dados com esse numero de docoumento");
                         return true;
@@ -103,89 +104,36 @@ namespace PGE_V2
             }
         }
 
-        public DataTable Registar_Multa()
-        {
-            DataTable dt = new DataTable();
 
-            conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
-            strSQL = "INSERT INTO Multa (Id_Login,Nº_Doc, Descricao_Multa) VALUES (@Id_Login,@Nº_Doc, @Descricao_Multa)";
-            comando = new SqlCommand(strSQL, conexao);
-
-            comando.Parameters.AddWithValue("@Id_Login", text_idLogin.Text);
-            comando.Parameters.AddWithValue("@Nº_Doc", text_num_Bi.Text);
-            comando.Parameters.AddWithValue("@Descricao_Multa", txtDetalhes.Text);
-
-
-            conexao.Open();
-            comando.ExecuteNonQuery();
-
-            return dt;
-        }
-
-        private DataTable salvar_tipo_documento(string Nº_Documento, string Descricao)
-        {
-            DataTable dt = new DataTable();
-
-            conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
-            strSQL = "INSERT INTO Tipo_Documento (Nº_Documento,Estado, Descricao_Tipo_Documento) VALUES (@Nº_Documento,@Estado, @Descricao_Tipo_Documento)";
-            comando = new SqlCommand(strSQL, conexao);
-
-            //comando.Parameters.AddWithValue("@Nº_Documento", label2.Text);
-            comando.Parameters.AddWithValue("@Nº_Documento", $"{Nº_Documento}");
-            comando.Parameters.AddWithValue("@Estado", 1);
-            comando.Parameters.AddWithValue("@Descricao_Tipo_Documento", $"{Descricao}");
-
-
-            conexao.Open();
-            comando.ExecuteNonQuery();
-
-            conexao.Close();
-            return dt;
-        }
 
         private void Salvar_Click(object sender, EventArgs e)
         {
-            try
+            // SE  a funçaovalida_campos_detencao for falso, significa que os campos estão vazios e cancela a operação
+            // SE  a funçao Verifica_SeExiste_NaBD retornar true,significa o nº documento já existe e cancela a operação
+            if (valida_campos_detencao() == false || Verifica_SeExiste_NaBD(text_num_Bi.Text) == true)
             {
-                conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
-                strSQL = "INSERT INTO Dados_Pessoais (Nº_BI, Nome_Completo, Filho_de, E_de, Data_nasc, Genero) VALUES (@Nº_BI, @Nome_Completo, @Filho_de, @E_de, @Data_nasc, @Genero)";
-                comando = new SqlCommand(strSQL, conexao);
+                return;
 
-                comando.Parameters.AddWithValue("@Nº_BI", text_num_Bi.Text);
-                comando.Parameters.AddWithValue("@Nome_Completo", text_nome.Text);
-                comando.Parameters.AddWithValue("@Filho_de", textBox1.Text);
-                comando.Parameters.AddWithValue("@e_de", textBox2.Text);
-                comando.Parameters.AddWithValue("@Data_nasc", textBox3.Text);
-                comando.Parameters.AddWithValue("@genero", comboBoxGenero.Text);
+            }
+            else
+            {
+                UsuarioController.Salvar_DadosPessoais(
+                    text_num_Bi.Text,
+                    text_nome.Text,
+                    textFilhoDe.Text,
+                    textEDe.Text,
+                    textNascimento.Text,
+                    comboBoxGenero.Text);
 
-
-                // SE  a funçaovalida_campos_detencao for falso, significa que os campos estão vazios e cancela a operação
-                // SE  a funçao Verifica_SeExiste_NaBD retornar true,significa o nº documento já existe e cancela a operação
-                if (valida_campos_detencao() == false || Verifica_SeExiste_NaBD(text_num_Bi.Text))
-                {
-                    return;
-
-                }
-
-                conexao.Open();
-                comando.ExecuteNonQuery();
-
-                Registar_Multa();
-                salvar_tipo_documento(text_num_Bi.Text, cmbTipoDocumento.Text);
+                UsuarioController.Salvar_Multa(Usuario_ativo.id_Login, int.Parse(text_num_Bi.Text), txtDetalhes.Text);
+                UsuarioController.Salvar_Documento(text_num_Bi.Text, cmbTipoDocumento.Text);
 
                 MessageBox.Show("Registado com Sucesso");
+                limpa_Campos();
             }
-            catch (Exception ex)
-            {
 
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conexao.Close();
-                conexao = null;
-                comando = null;
-            }
+
+
         }
     }
 }

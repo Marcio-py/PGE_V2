@@ -15,11 +15,10 @@ namespace PGE_V2.Controler
         
         private readonly UsuarioInterface _UsuarioRepository;
 
-        public static void Salvar_DadosPessoais(int Nº_BI, string Nome_Completo, string Filho_de, string E_de,string Data_nasc, string Genero)
+        public static void Salvar_DadosPessoais(string Nº_BI, string Nome_Completo, string Filho_de, string E_de,string Data_nasc, string Genero)
         {
             SqlConnection connectionString = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; "); ;
             SqlCommand comando;
-            //SqlDataReader dr;
             string strSQL;
 
             strSQL = "INSERT INTO Dados_Pessoais (Nº_BI, Nome_Completo, Filho_de, E_de, Data_nasc, Genero) VALUES (@Nº_BI, @Nome_Completo, @Filho_de, @E_de, @Data_nasc, @Genero)";
@@ -38,7 +37,30 @@ namespace PGE_V2.Controler
             connectionString.Close();
         }
 
-        public static DataTable Salvar_Documento(string Documento, string Descricao)
+        public static DataTable Salvar_Multa(int Id_Login,int Nº_Doc, string Descricao_Multa)
+        {
+            SqlConnection connectionString = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; "); ;
+            SqlCommand comando;
+            string strSQL;
+            DataTable dt = new DataTable();
+
+            connectionString = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
+            strSQL = "INSERT INTO Multa (Id_Login,Nº_Doc, Descricao_Multa) VALUES (@Id_Login,@Nº_Doc, @Descricao_Multa)";
+            comando = new SqlCommand(strSQL, connectionString);
+
+            comando.Parameters.AddWithValue("@Id_Login", Id_Login);
+            comando.Parameters.AddWithValue("@Nº_Doc", Nº_Doc);
+            comando.Parameters.AddWithValue("@Descricao_Multa", Descricao_Multa);
+
+
+            connectionString.Open();
+            comando.ExecuteNonQuery();
+
+            return dt;
+            connectionString.Close();
+        }
+
+        public static DataTable Salvar_Documento(string Num_Documento, string Descricao)
         {
             SqlConnection connectionString = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; "); ;
             SqlCommand comando;
@@ -52,7 +74,7 @@ namespace PGE_V2.Controler
             comando = new SqlCommand(strSQL, connectionString);
 
             //comando.Parameters.AddWithValue("@Nº_Documento", label2.Text);
-            comando.Parameters.AddWithValue("@Nº_Documento", $"{Documento}");
+            comando.Parameters.AddWithValue("@Nº_Documento", $"{Num_Documento}");
             comando.Parameters.AddWithValue("@Estado", 1);
             comando.Parameters.AddWithValue("@Descricao_Tipo_Documento", $"{Descricao}");
 

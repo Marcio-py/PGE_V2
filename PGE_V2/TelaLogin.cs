@@ -51,6 +51,8 @@ namespace WindowsFormsApplication1
                     {
                         MessageBox.Show("Bem vindo! Clique no ok para avançar", "Mensagem");
                         Usuario_ativo.Estado = (int)red["Estado"];
+                        Usuario_ativo.id_Login = (int)red["Id_Login"];
+
                         this.Hide();
                         Tela_Inicial telaIncial = new Tela_Inicial();
                         telaIncial.ShowDialog();

@@ -35,11 +35,11 @@
             text_num_Bi = new TextBox();
             lbl_num_Bi = new Label();
             label_genero = new Label();
-            textBox3 = new TextBox();
+            textNascimento = new TextBox();
             label_data_nasc = new Label();
-            textBox2 = new TextBox();
+            textEDe = new TextBox();
             label_e_de = new Label();
-            textBox1 = new TextBox();
+            textFilhoDe = new TextBox();
             label_filho_de = new Label();
             text_nome = new TextBox();
             lbl_nome = new Label();
@@ -61,11 +61,11 @@
             groupBox.Controls.Add(text_num_Bi);
             groupBox.Controls.Add(lbl_num_Bi);
             groupBox.Controls.Add(label_genero);
-            groupBox.Controls.Add(textBox3);
+            groupBox.Controls.Add(textNascimento);
             groupBox.Controls.Add(label_data_nasc);
-            groupBox.Controls.Add(textBox2);
+            groupBox.Controls.Add(textEDe);
             groupBox.Controls.Add(label_e_de);
-            groupBox.Controls.Add(textBox1);
+            groupBox.Controls.Add(textFilhoDe);
             groupBox.Controls.Add(label_filho_de);
             groupBox.Controls.Add(text_nome);
             groupBox.Controls.Add(lbl_nome);
@@ -136,14 +136,14 @@
             label_genero.TabIndex = 23;
             label_genero.Text = "Genero";
             // 
-            // textBox3
+            // textNascimento
             // 
-            textBox3.Location = new Point(433, 30);
-            textBox3.Margin = new Padding(2);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(193, 21);
-            textBox3.TabIndex = 22;
+            textNascimento.Location = new Point(433, 30);
+            textNascimento.Margin = new Padding(2);
+            textNascimento.Multiline = true;
+            textNascimento.Name = "textNascimento";
+            textNascimento.Size = new Size(193, 21);
+            textNascimento.TabIndex = 22;
             // 
             // label_data_nasc
             // 
@@ -155,14 +155,14 @@
             label_data_nasc.TabIndex = 21;
             label_data_nasc.Text = "Data de nascimento";
             // 
-            // textBox2
+            // textEDe
             // 
-            textBox2.Location = new Point(84, 109);
-            textBox2.Margin = new Padding(2);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(181, 21);
-            textBox2.TabIndex = 20;
+            textEDe.Location = new Point(84, 109);
+            textEDe.Margin = new Padding(2);
+            textEDe.Multiline = true;
+            textEDe.Name = "textEDe";
+            textEDe.Size = new Size(181, 21);
+            textEDe.TabIndex = 20;
             // 
             // label_e_de
             // 
@@ -174,14 +174,14 @@
             label_e_de.TabIndex = 19;
             label_e_de.Text = "E de ";
             // 
-            // textBox1
+            // textFilhoDe
             // 
-            textBox1.Location = new Point(84, 69);
-            textBox1.Margin = new Padding(2);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(193, 21);
-            textBox1.TabIndex = 18;
+            textFilhoDe.Location = new Point(84, 69);
+            textFilhoDe.Margin = new Padding(2);
+            textFilhoDe.Multiline = true;
+            textFilhoDe.Name = "textFilhoDe";
+            textFilhoDe.Size = new Size(193, 21);
+            textFilhoDe.TabIndex = 18;
             // 
             // label_filho_de
             // 
@@ -296,11 +296,11 @@
         private TextBox text_num_Bi;
         private Label lbl_num_Bi;
         private Label label_genero;
-        private TextBox textBox3;
+        private TextBox textNascimento;
         private Label label_data_nasc;
-        private TextBox textBox2;
+        private TextBox textEDe;
         private Label label_e_de;
-        private TextBox textBox1;
+        private TextBox textFilhoDe;
         private Label label_filho_de;
         private TextBox text_nome;
         private Label lbl_nome;

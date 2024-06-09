@@ -9,6 +9,7 @@ namespace PGE_V2
     public class Usuario_ativo
     {
         public static int Estado { get; set; }
+        public static int id_Login { get; set; }
 
     }
 }

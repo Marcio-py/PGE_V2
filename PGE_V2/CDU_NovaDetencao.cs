@@ -59,7 +59,7 @@ namespace PGE_V2
             return dt;
         }
 
-        public void limpa_Campos()
+        public void Limpa_Campos()
         {
             text_num_Bi.Text = "";
             text_nome.Text = "";
@@ -169,8 +169,6 @@ namespace PGE_V2
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            try
-            {
                 if (valida_campos_detencao() == false || Verifica_SeExiste_NaBD(text_num_Bi.Text) == true )
                 {
                     return;
@@ -178,7 +176,7 @@ namespace PGE_V2
                 }
 
                 UsuarioController.Salvar_DadosPessoais(
-                    int.Parse(text_num_Bi.Text), 
+                    text_num_Bi.Text, 
                     text_nome.Text, textBox1.Text, 
                     textBox2.Text, 
                     textBox3.Text, 
@@ -189,19 +187,8 @@ namespace PGE_V2
 
                 UsuarioController.Salvar_Documento(text_num_Bi.Text, cmbTipoDocumento.Text);
                 MessageBox.Show("Adicionado um processo de detenção");
-                limpa_Campos();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conexao.Close();
-                conexao = null;
-                comando = null;
+                Limpa_Campos();
             }
         }
     }
-}
+
