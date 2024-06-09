@@ -2,6 +2,7 @@
 using PGE_V2.Interface;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,79 @@ namespace PGE_V2.Controler
             comando.ExecuteNonQuery();
 
             connectionString.Close();
+        }
+
+        public static DataTable Salvar_Documento(string Documento, string Descricao)
+        {
+            SqlConnection connectionString = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; "); ;
+            SqlCommand comando;
+            //SqlDataReader dr;
+            string strSQL;
+
+            DataTable dt = new DataTable();
+
+            connectionString = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
+            strSQL = "INSERT INTO Tipo_Documento (Nº_Documento,Estado, Descricao_Tipo_Documento) VALUES (@Nº_Documento,@Estado, @Descricao_Tipo_Documento)";
+            comando = new SqlCommand(strSQL, connectionString);
+
+            //comando.Parameters.AddWithValue("@Nº_Documento", label2.Text);
+            comando.Parameters.AddWithValue("@Nº_Documento", $"{Documento}");
+            comando.Parameters.AddWithValue("@Estado", 1);
+            comando.Parameters.AddWithValue("@Descricao_Tipo_Documento", $"{Descricao}");
+
+
+            connectionString.Open();
+            comando.ExecuteNonQuery();
+
+            connectionString.Close();
+            return dt;
+        }
+
+        public static DataTable Salvar_Detencao(int Id_DadosPessoais, string Detalhes_Detecao)
+        {
+            SqlConnection connectionString = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; "); ;
+            SqlCommand comando;
+            string strSQL;
+            DataTable dt = new DataTable();
+
+            connectionString = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
+            strSQL = "INSERT INTO Detecao (Id_Dados_Pessoais,Id_Login, Detalhes_Detecao) VALUES (@Id_Dados_Pessoais,@Id_Login, @Detalhes_Detecao)";
+            comando = new SqlCommand(strSQL, connectionString);
+
+            comando.Parameters.AddWithValue("@Id_Dados_Pessoais", Id_DadosPessoais);
+            comando.Parameters.AddWithValue("@Id_Login", 1);
+            comando.Parameters.AddWithValue("@Detalhes_Detecao", Detalhes_Detecao);
+
+
+            connectionString.Open();
+            comando.ExecuteNonQuery();
+
+            connectionString.Close();
+            return dt;
+        }
+
+        public static int Pesquisar_IDDadosPessoais(string Numero_BI)
+        {
+            int idDadosPessoais = -1; // Padrão, caso o usuario não seja encontrado
+
+            using (var conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; "))
+            {
+                conexao.Open();
+                var strSQL = "SELECT Id_Dados_Pessoais FROM Dados_Pessoais WHERE Nº_BI = @Nº_BI";
+                using (var comando = new SqlCommand(strSQL, conexao))
+                {
+                    comando.Parameters.AddWithValue("@Nº_BI", Numero_BI);
+                    using (var reader = comando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            idDadosPessoais = Convert.ToInt32(reader["Id_Dados_Pessoais"]);
+                        }
+                    }
+                }
+            }
+
+            return idDadosPessoais;
         }
     }
 

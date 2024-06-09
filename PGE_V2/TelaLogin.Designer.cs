@@ -56,7 +56,6 @@
             label1.Size = new Size(61, 18);
             label1.TabIndex = 0;
             label1.Text = "ID_Login";
-            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -80,7 +79,6 @@
             textLogin.Name = "textLogin";
             textLogin.Size = new Size(195, 23);
             textLogin.TabIndex = 2;
-            textLogin.TextChanged += textLogin_TextChanged;
             // 
             // TextSenha
             // 
@@ -93,7 +91,6 @@
             TextSenha.PasswordChar = '*';
             TextSenha.Size = new Size(195, 21);
             TextSenha.TabIndex = 3;
-            TextSenha.TextChanged += Senha_TextChanged;
             // 
             // button1
             // 
@@ -132,7 +129,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // pictureBox2
             // 
@@ -186,7 +182,6 @@
             Margin = new Padding(4, 3, 4, 3);
             Name = "TelaLogin";
             Text = "TelaLogin";
-            Load += TelaLogin_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
