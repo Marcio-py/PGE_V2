@@ -82,6 +82,7 @@
             Validar_btn.TabIndex = 14;
             Validar_btn.Text = "Validar";
             Validar_btn.UseVisualStyleBackColor = true;
+            Validar_btn.Click += Validar_btn_Click;
             // 
             // modificar_btn
             // 
@@ -91,7 +92,7 @@
             modificar_btn.TabIndex = 13;
             modificar_btn.Text = "Modificar";
             modificar_btn.UseVisualStyleBackColor = true;
-            modificar_btn.Click += button4_Click;
+            modificar_btn.Click += Mudar_Click;
             // 
             // apagar_btn
             // 
@@ -111,7 +112,7 @@
             btn_salvar.TabIndex = 10;
             btn_salvar.Text = "Salvar";
             btn_salvar.UseVisualStyleBackColor = true;
-            btn_salvar.Click += button2_Click;
+            btn_salvar.Click += btn_salvar_Click;
             // 
             // label2
             // 
@@ -176,7 +177,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(Box_AP);
             Name = "CDUApreensao";
-            Size = new Size(970, 436);
+            Size = new Size(631, 436);
             Box_AP.ResumeLayout(false);
             Box_AP.PerformLayout();
             ResumeLayout(false);

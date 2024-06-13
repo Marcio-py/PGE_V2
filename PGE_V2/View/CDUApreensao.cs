@@ -1,4 +1,8 @@
-﻿using System;
+﻿using PGE_V2.Controler;
+using PGE_V2.Dados;
+using PGE_V2.Modelos;
+using PGE_V2.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,15 +12,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Xunit;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PGE_V2
 {
     public partial class CDUApreensao : UserControl
     {
-        SqlConnection conexao;
-        SqlCommand comando;
-        SqlDataAdapter da;
-        SqlDataReader dr;
         string strSQL;
         public CDUApreensao()
         {
@@ -24,151 +26,79 @@ namespace PGE_V2
         }
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void btn_salvar_Click(object sender, EventArgs e)
         {
-            try
+            // Inicializar conexão
+            var apreensaoRepositorio = new ApreensaoRepositorio(DBcontexto.CaminhoBD());
+            // executar operação
+            ApreensaoController apreensaoController = new ApreensaoController(apreensaoRepositorio);
+            if (Verifica_Registo_DoCidadao(N_doc.Text))
             {
-                conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
-                strSQL = "INSERT INTO Apreensao (Id_Login, Nº_Documento, Data_Apreencao, Descricao_Apreensao) VALUES (@Id_Login, @Nº_Documento, @Data_Apreencao, @Descricao_Apreensao)";
-                comando = new SqlCommand(strSQL, conexao);
-
-                comando.Parameters.AddWithValue("@Nº_Documento", N_doc.Text);
-                comando.Parameters.AddWithValue("@Id_Login", ID_login.Text);
-                comando.Parameters.AddWithValue("@Descricao_Apreensao", Descricao.Text);
-                comando.Parameters.AddWithValue("@Data_Apreencao", DataAP.Text);
-
-                if(Verifica_Registo_DoCidadao(N_doc.Text) == false || valida_campos_detencao() == false)
-                {
-                    return;
-                }
-
-                conexao.Open();
-                comando.ExecuteNonQuery();
-
-                //salvar_tipo_documento(N_doc.Text, label4.Text);
-                MessageBox.Show("Processo de apreensão registado com Sucesso");
-                DataAP.Text = "";
-                Descricao.Text = "";
-                N_doc.Text = "";
-                ID_login.Text = "";
+                apreensaoController.Create(Descricao.Text, DataAP.Text, N_doc.Text, int.Parse(ID_login.Text));
             }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conexao.Close();
-                conexao = null;
-                comando = null;
-            }
+            Limpa_CamposApreensao();
         }
 
         public bool Verifica_Registo_DoCidadao(string numeroBI)
         {
-            using (SqlConnection conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True;"))
-            {
-                conexao.Open();
-                string strSQL = "SELECT COUNT(*) FROM Tipo_Documento WHERE Nº_Documento = @Nº_Documento";
-                using (SqlCommand comando = new SqlCommand(strSQL, conexao))
-                {
-                    comando.Parameters.AddWithValue("@Nº_Documento", numeroBI);
-                    int count = (int)comando.ExecuteScalar();
+            SqlConnection conexao = new SqlConnection(DBcontexto.CaminhoBD());
+            conexao.Open();
+            string strSQL = "SELECT COUNT(*) FROM Dados_Pessoais WHERE Nº_BI = @Nº_BI";
+            SqlCommand comando = new SqlCommand(strSQL, conexao);
 
-                    // Check if the count is greater than 0 (record exists)
-                    if (count > 0)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Apreensão negada: O cívil não tem nenhum registo");
-                        return false;
-                    }
-                }
-            }
+            comando.Parameters.AddWithValue("@Nº_BI", numeroBI);
+            int numeroDeOcorrencias = (int)comando.ExecuteScalar();
+            if (numeroDeOcorrencias > 0) { return true; }
+            else { MessageBox.Show("Apreensão negada: O cívil não tem nenhum registo"); return false; }
+        }
+
+        public void Limpa_CamposApreensao()
+        {
+            DataAP.Text = ""; Descricao.Text = ""; N_doc.Text = ""; ID_login.Text = "";
         }
 
         public bool valida_campos_detencao()
         {
-            if (!string.IsNullOrEmpty(ID_login.Text) && !string.IsNullOrEmpty(N_doc.Text) &&
-               !string.IsNullOrEmpty(Descricao.Text))
-            {
-                // MessageBox.Show("Campos preenchidos ");
-                return true;
-
-            }
-            else
-            {
-                MessageBox.Show("Por favor preencha os campos");
-                return false;
-            }
+            if (!string.IsNullOrEmpty(ID_login.Text) && !string.IsNullOrEmpty(N_doc.Text) && !string.IsNullOrEmpty(Descricao.Text))
+            { return true; }
+            else { MessageBox.Show("Por favor preencha os campos"); return false; }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void Mudar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True;");
-                strSQL = "UPDATE Apreensao SET Data_Apreencao = @Data_Apreencao, Descricao_Apreensao= @Descricao_Apreensao WHERE Nº_Documento = @Nº_Documento";
-                comando = new SqlCommand(strSQL, conexao);
-
-                comando.Parameters.AddWithValue("@Data_Apreencao", DataAP.Text);
-                comando.Parameters.AddWithValue("@Descricao_Apreensao", Descricao.Text);
-                comando.Parameters.AddWithValue("@Nº_Documento", N_doc.Text);
-
-                conexao.Open();
-                comando.ExecuteNonQuery();
-                MessageBox.Show("modificação feita com Sucesso");
-                DataAP.Text = "";
-                Descricao.Text = "";
-                N_doc.Text = "";
-                ID_login.Text = "";
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conexao.Close();
-                conexao = null;
-                comando = null;
-            }
+            // Inicializar conexão
+            var apreensaoRepositorio = new ApreensaoRepositorio(DBcontexto.CaminhoBD());
+            // executar operação
+            ApreensaoController apreensaoController = new ApreensaoController(apreensaoRepositorio);
+            apreensaoController.Change(Descricao.Text, DataAP.Text, N_doc.Text);
+            Limpa_CamposApreensao();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True;");
-                strSQL = "Delete Apreensao WHERE Nº_Documento = @Nº_Documento";
-                comando = new SqlCommand(strSQL, conexao);
-
-                comando.Parameters.AddWithValue("@Nº_Documento", N_doc.Text);
-
-                conexao.Open();
-                comando.ExecuteNonQuery();
-                MessageBox.Show("Apagado com Sucesso");
-                DataAP.Text = "";
-                Descricao.Text = "";
-                N_doc.Text = "";
-                ID_login.Text = "";
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conexao.Close();
-                conexao = null;
-                comando = null;
-            }
+            // Inicializar conexão
+            var apreensaoRepositorio = new ApreensaoRepositorio(DBcontexto.CaminhoBD());
+            // executar operação
+            ApreensaoController apreensaoController = new ApreensaoController(apreensaoRepositorio);
+            apreensaoController.Delete(N_doc.Text);
+            Limpa_CamposApreensao();
         }
 
+        private async void Validar_btn_Click(object sender, EventArgs e)
+        {
+            // Inicializar conexão
+            var apreensaoRepositorio = new ApreensaoRepositorio(DBcontexto.CaminhoBD());
+            // executar operação
+            DataTable retornoApreensao = apreensaoRepositorio.BuscarPorId_RetornaUmaLinha(N_doc.Text);
+            if (retornoApreensao.Rows.Count != 0) { DataRow apreensaoLinha = retornoApreensao.Rows[0]; PopularCampos(apreensaoLinha); }
+            else { MessageBox.Show("Erro de Validação: Civil não encontrado"); return; }
+        }
+
+        private void PopularCampos(DataRow apreensaoLinha)
+        {
+            ID_login.Text = apreensaoLinha["ID_login"].ToString();
+            Descricao.Text = apreensaoLinha["Descricao_Apreensao"].ToString();
+            DataAP.Text = apreensaoLinha["Data_Apreencao"].ToString();
+        }
     }
 }

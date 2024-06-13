@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGE_V2", "PGE_V2\PGE_V2.csproj", "{9C5AA6AF-89FC-4A84-A6ED-773D8159A4FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PGE_V2", "PGE_V2\PGE_V2.csproj", "{9C5AA6AF-89FC-4A84-A6ED-773D8159A4FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{4DD8F15F-7D9B-4FFA-93C8-579F547D9A9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{9C5AA6AF-89FC-4A84-A6ED-773D8159A4FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C5AA6AF-89FC-4A84-A6ED-773D8159A4FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C5AA6AF-89FC-4A84-A6ED-773D8159A4FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DD8F15F-7D9B-4FFA-93C8-579F547D9A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DD8F15F-7D9B-4FFA-93C8-579F547D9A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DD8F15F-7D9B-4FFA-93C8-579F547D9A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DD8F15F-7D9B-4FFA-93C8-579F547D9A9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
