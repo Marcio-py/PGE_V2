@@ -26,20 +26,21 @@ namespace PGE_V2
         }
 
 
-        private async void btn_salvar_Click(object sender, EventArgs e)
+        private void btn_salvar_Click(object sender, EventArgs e)
         {
             // Inicializar conexão
             var apreensaoRepositorio = new ApreensaoRepositorio(DBcontexto.CaminhoBD());
             // executar operação
             ApreensaoController apreensaoController = new ApreensaoController(apreensaoRepositorio);
-            if (Verifica_Registo_DoCidadao(N_doc.Text))
+            int documentosRepetidos = apreensaoController.Find(N_doc.Text).Rows.Count;
+            if (Apreensao_Permitida(N_doc.Text) || documentosRepetidos<1)
             {
                 apreensaoController.Create(Descricao.Text, DataAP.Text, N_doc.Text, int.Parse(ID_login.Text));
             }
             Limpa_CamposApreensao();
         }
 
-        public bool Verifica_Registo_DoCidadao(string numeroBI)
+        public bool Apreensao_Permitida(string numeroBI)
         {
             SqlConnection conexao = new SqlConnection(DBcontexto.CaminhoBD());
             conexao.Open();
@@ -52,18 +53,6 @@ namespace PGE_V2
             else { MessageBox.Show("Apreensão negada: O cívil não tem nenhum registo"); return false; }
         }
 
-        public void Limpa_CamposApreensao()
-        {
-            DataAP.Text = ""; Descricao.Text = ""; N_doc.Text = ""; ID_login.Text = "";
-        }
-
-        public bool valida_campos_detencao()
-        {
-            if (!string.IsNullOrEmpty(ID_login.Text) && !string.IsNullOrEmpty(N_doc.Text) && !string.IsNullOrEmpty(Descricao.Text))
-            { return true; }
-            else { MessageBox.Show("Por favor preencha os campos"); return false; }
-        }
-
         private void Mudar_Click(object sender, EventArgs e)
         {
             // Inicializar conexão
@@ -74,7 +63,7 @@ namespace PGE_V2
             Limpa_CamposApreensao();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_Apagar_Click(object sender, EventArgs e)
         {
             // Inicializar conexão
             var apreensaoRepositorio = new ApreensaoRepositorio(DBcontexto.CaminhoBD());
@@ -84,14 +73,27 @@ namespace PGE_V2
             Limpa_CamposApreensao();
         }
 
-        private async void Validar_btn_Click(object sender, EventArgs e)
+        private void Validar_btn_Click(object sender, EventArgs e)
         {
             // Inicializar conexão
             var apreensaoRepositorio = new ApreensaoRepositorio(DBcontexto.CaminhoBD());
             // executar operação
-            DataTable retornoApreensao = apreensaoRepositorio.BuscarPorId_RetornaUmaLinha(N_doc.Text);
+            ApreensaoController apreensaoController = new ApreensaoController(apreensaoRepositorio);
+            DataTable retornoApreensao = apreensaoController.Find(N_doc.Text);
             if (retornoApreensao.Rows.Count != 0) { DataRow apreensaoLinha = retornoApreensao.Rows[0]; PopularCampos(apreensaoLinha); }
             else { MessageBox.Show("Erro de Validação: Civil não encontrado"); return; }
+        }
+
+        public void Limpa_CamposApreensao()
+        {
+            DataAP.Text = ""; Descricao.Text = ""; N_doc.Text = ""; ID_login.Text = "";
+        }
+
+        public bool valida_campos_detencao()
+        {
+            if (!string.IsNullOrEmpty(ID_login.Text) && !string.IsNullOrEmpty(N_doc.Text) && !string.IsNullOrEmpty(Descricao.Text))
+            { return true; }
+            else { MessageBox.Show("Por favor preencha os campos"); return false; }
         }
 
         private void PopularCampos(DataRow apreensaoLinha)

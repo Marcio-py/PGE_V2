@@ -102,7 +102,7 @@
             apagar_btn.TabIndex = 9;
             apagar_btn.Text = "Deletar";
             apagar_btn.UseVisualStyleBackColor = true;
-            apagar_btn.Click += button1_Click;
+            apagar_btn.Click += btn_Apagar_Click;
             // 
             // btn_salvar
             // 

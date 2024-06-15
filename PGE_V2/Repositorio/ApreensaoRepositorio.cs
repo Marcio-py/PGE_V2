@@ -23,138 +23,97 @@ namespace PGE_V2.Repositorio
 
         public void Add(Apreensao apreensao)
         {
-            SqlConnection connection = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True;");
-            connection.Open();
-
-                // Assuming you have a table named 'Apreensao' in your database
-                var sql = "INSERT INTO Apreensao (Descricao_Apreensao, Data_Apreencao, Nº_Documento, Id_Login) " +
-                          "VALUES ( @Descricao, @Data, @Nº_Documento, @Id_Login)";
-
-                using (var command = new SqlCommand(sql, connection))
+            var sql = "INSERT INTO Apreensao (Descricao_Apreensao, Data_Apreencao, Nº_Documento, Id_Login) " +
+                      "VALUES ( @Descricao, @Data, @Nº_Documento, @Id_Login)";
+            using (SqlConnection connection = new SqlConnection(DBcontexto.CaminhoBD()))
+            using (var command = new SqlCommand(sql, connection))
+            {
+                try
                 {
-
+                    connection.Open();
                     command.Parameters.AddWithValue("@Descricao", apreensao.Descricao_Apreensao);
                     command.Parameters.AddWithValue("@Data", apreensao.Data_Apreencao ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("@Nº_Documento", apreensao.Nº_Documento);
                     command.Parameters.AddWithValue("@Id_Login", apreensao.Id_Login);
-
                     command.ExecuteNonQuery();
-
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
 
         }
-     
-        public DataTable BuscarPorId(string Num_Documento)
+
+        public DataTable BuscarPorId(Apreensao apreensao)
         {
-            DataTable tabela = new DataTable();
-            try
+            using (SqlConnection connection = new SqlConnection(DBcontexto.CaminhoBD()))
+            using (SqlCommand command = new SqlCommand("SELECT * FROM Apreensao WHERE Nº_Documento = @NumDocumento", connection))
             {
-            var connectionString = DBcontexto.CaminhoBD();
-            SqlConnection conexao = new SqlConnection(connectionString);
+                command.Parameters.AddWithValue("@NumDocumento", apreensao.Nº_Documento);
 
-            SqlCommand comando = new SqlCommand($"SELECT * FROM Apreensao Where Nº_Documento = '{Num_Documento}'", conexao);
-            conexao.Open();
+                DataTable tabela = new DataTable();
 
-            SqlDataAdapter slqDat = new SqlDataAdapter(comando);
-            slqDat.Fill(tabela);
-
-            string resultado;
-
-            comando.ExecuteReader();
-
-            conexao.Close();
+                try
+                {
+                    connection.Open();
+                    using (SqlDataAdapter sqlDat = new SqlDataAdapter(command))
+                    {
+                        sqlDat.Fill(tabela);
+                    }
+                    return tabela;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return tabela;
+                }
             }
-            catch (Exception ex)
+        }
+
+        public void Update(Apreensao apreensao)
+        {
+            string strSQL = "UPDATE Apreensao SET Data_Apreencao = @Data, Descricao_Apreensao = @Descricao WHERE Nº_Documento = @Nº_Documento";
+
+            using (SqlConnection connection = new SqlConnection(DBcontexto.CaminhoBD()))
+            using (SqlCommand command = new SqlCommand(strSQL, connection))
             {
-                MessageBox.Show("Erro: " + ex.Message);
+                command.Parameters.AddWithValue("@Descricao", apreensao.Descricao_Apreensao);
+                command.Parameters.AddWithValue("@Data", apreensao.Data_Apreencao ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@Nº_Documento", apreensao.Nº_Documento);
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            return tabela;
         }
 
         public void Delete(Apreensao apreensao)
         {
-            SqlConnection ConnetionString;
-            SqlCommand comando;
-            string strSQL;
-            ConnetionString = new SqlConnection(DBcontexto.CaminhoBD());
+            string strSQL = "DELETE FROM Apreensao WHERE Nº_Documento = @Nº_Documento";
 
-            try
+            using (SqlConnection connection = new SqlConnection(DBcontexto.CaminhoBD()))
+            using (SqlCommand command = new SqlCommand(strSQL, connection))
             {
-                ConnetionString = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True;");
-                strSQL = "Delete Apreensao WHERE Nº_Documento = @Nº_Documento";
-                comando = new SqlCommand(strSQL, ConnetionString);
+                command.Parameters.AddWithValue("@Nº_Documento", apreensao.Nº_Documento);
 
-                comando.Parameters.AddWithValue("@Nº_Documento", apreensao.Nº_Documento);
-
-                ConnetionString.Open();
-                comando.ExecuteNonQuery();
-                //MessageBox.Show("Apagado com Sucesso");
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                ConnetionString.Close();
-                ConnetionString = null;
-                comando = null;
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
-
-        public void Update(Apreensao apreensao)
-        {
-            SqlConnection ConnetionString;
-            SqlCommand comando;
-            string strSQL;
-            ConnetionString = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True;");
-            try
-            {
-
-                strSQL = "UPDATE Apreensao SET Data_Apreencao = @Data, Descricao_Apreensao = @Descricao WHERE Nº_Documento = @Nº_Documento";
-                comando = new SqlCommand(strSQL, ConnetionString);
-
-                comando.Parameters.AddWithValue("@Descricao", apreensao.Descricao_Apreensao);
-                comando.Parameters.AddWithValue("@Data", apreensao.Data_Apreencao ?? (object)DBNull.Value);
-                comando.Parameters.AddWithValue("@Nº_Documento", apreensao.Nº_Documento);
-
-                ConnetionString.Open();
-                comando.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                ConnetionString.Close();
-                ConnetionString = null;
-                comando = null;
-            }
-        }
-
-
-        public DataTable BuscarPorId_RetornaUmaLinha(string Num_Documento)
-        {
-            DataTable tabela = new DataTable();
-            var connectionString = DBcontexto.CaminhoBD();
-            SqlConnection conexao = new SqlConnection(connectionString);
-
-            SqlCommand comando = new SqlCommand($"SELECT * FROM Apreensao Where Nº_Documento = '{Num_Documento}'", conexao);
-            conexao.Open();
-
-            SqlDataAdapter slqDat = new SqlDataAdapter(comando);
-            slqDat.Fill(tabela);
-
-            string resultado;
-
-            SqlDataReader red = comando.ExecuteReader();
-            conexao.Close();
-
-            return tabela;
-        }
     }
 }

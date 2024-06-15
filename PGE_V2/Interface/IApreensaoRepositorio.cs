@@ -17,7 +17,6 @@ namespace PGE_V2.Interface
 
         void Delete(Apreensao apreensao);
 
-        DataTable BuscarPorId(string Num_Documento);
-        DataTable BuscarPorId_RetornaUmaLinha(string Num_Documento);
+        DataTable BuscarPorId(Apreensao apreensao);
     }
 }

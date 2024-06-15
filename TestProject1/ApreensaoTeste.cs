@@ -14,91 +14,97 @@ namespace TestProject1
     public class ApreensaoTeste
     {
         [Fact]
+        [Trait("Apreensão", "Create update read")]
         public void Create_DeveAdicionar_UmaLinhaNaBD()
         {
+            // Arrange
+            var apreensaoToSave = new Apreensao
+            {
+                Descricao_Apreensao = "Teste ad~ção",
+                Data_Apreencao = "2000-04-04",
+                Nº_Documento = "3LA",
+            };
+
+            // Act
             var connectionString = DBcontexto.CaminhoBD();
             var apreensaoRepositorio = new ApreensaoRepositorio(connectionString);
-
             ApreensaoController apreensaoController = new ApreensaoController(apreensaoRepositorio);
-            apreensaoController.Create("Amostra", "2000/07/07", "3LA", 1);
-
-            // Assert (verify that the data was inserted)
-            using (var connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                var selectSql = "SELECT COUNT(*) FROM Apreensao WHERE Nº_Documento = @Nº_Documento";
-                using (var command = new SqlCommand(selectSql, connection))
-                {
-                    command.Parameters.AddWithValue("@Nº_Documento", "3LA");
-                    var count = (int)command.ExecuteScalar();
-                    //Assert.Equal(1, count); 
-                    Assert.NotNull(count);
-                }
-            }
+            int documentosRepetidos = apreensaoController.Find(apreensaoToSave.Nº_Documento).Rows.Count;
+            // Se houver numeros de documentos repetidos cancela a operação
+            if (documentosRepetidos > 0 )  { return; }
+            { apreensaoController.Create(apreensaoToSave.Descricao_Apreensao, apreensaoToSave.Data_Apreencao, apreensaoToSave.Nº_Documento, 1); }
+            documentosRepetidos = apreensaoController.Find(apreensaoToSave.Nº_Documento).Rows.Count;
+            // Assert (Verificar se a informação foi adicionada)
+            Assert.Equal(1, documentosRepetidos); 
         }
         [Fact]
+        [Trait("Apreensão", "Create update read")]
         public void Change_DeveAlterar_DescricaoLinhaSelecionada()
         {
-            var connectionString = DBcontexto.CaminhoBD();
-            var apreensaoRepositorio = new ApreensaoRepositorio(connectionString);
-
-            //// Amostra do objeto apreensao para atualizar
-            //var apreensaoToSave = new Apreensao
-            //{
-            //    Descricao_Apreensao = "Nova descrição3",
-            //    Data_Apreencao = "2000/01/01",
-            //    Nº_Documento = "20210778LA020",
-            //    Id_Login = 1
-            //};
-            ////ACT
-            //apreensaoRepositorio.Update(apreensaoToSave);
-
-            // Assert (verify that the data was inserted)
-            using (var connection = new SqlConnection(connectionString))
+            // Arrange
+            var apreensaoToSave = new Apreensao
             {
-                connection.Open();
-                var selectSql = "SELECT Descricao_Apreensao FROM Apreensao WHERE Nº_Documento = @Nº_Documento";
-                using (var command = new SqlCommand(selectSql, connection))
-                {
-                    command.Parameters.AddWithValue("@Nº_Documento", "20210778LA020");
-                    var resultado = command.ExecuteScalar();
-                    //Assert.Equal(1, count); 
-                    Assert.Equal("Nova descrição3", resultado);
-                }
-            }
-
+                Descricao_Apreensao = "Alterado",
+                Data_Apreencao = "2000-04-04",
+                Nº_Documento = "3LA",
+            };
+            //Act
+            // Inicializar conexão  & executar operação
+            var apreensaoRepositorio = new ApreensaoRepositorio(DBcontexto.CaminhoBD());
+            ApreensaoController apreensaoController = new ApreensaoController(apreensaoRepositorio);
+            apreensaoController.Change(apreensaoToSave.Descricao_Apreensao, apreensaoToSave.Data_Apreencao, apreensaoToSave.Nº_Documento);
+            // Assert
+            DataRow tabelaEncontrada = apreensaoController.Find(apreensaoToSave.Nº_Documento).Rows[0];
+            string resultdescricao = tabelaEncontrada["Descricao_Apreensao"].ToString();
+            Assert.Contains(apreensaoToSave.Descricao_Apreensao, resultdescricao);
         }
 
         [Fact]
+        [Trait("Apreensão", "Create update read")]
         public void ProcuraElementoPorID_DeveRetorna_ValorDaLinhaSelecionada()
         {
-
-            DataTable tabela = new DataTable();
-            var connectionString = DBcontexto.CaminhoBD();
-            SqlConnection conexao = new SqlConnection(connectionString);
-
-            SqlCommand comando = new SqlCommand("SELECT * FROM Apreensao Where Nº_Documento = '20210778LA020'", conexao);  
-            conexao.Open();
-
-            SqlDataAdapter slqDat = new SqlDataAdapter(comando);
-            slqDat.Fill(tabela);
-
-           string resultdescricao;
-           string resultadoId;
-
-            SqlDataReader red = comando.ExecuteReader();
-            if (red.Read())
+            // Arrange
+            var apreensaoToSave = new Apreensao
             {
-                resultdescricao = red["Descricao_Apreensao"].ToString();
-                resultadoId = red["Id_Apreensao"].ToString();
-                Assert.Contains("Nova", resultdescricao);
-                Assert.Contains("2", resultadoId);
-            }
-            conexao.Close();
+                Descricao_Apreensao = "Alterado",
+                Data_Apreencao = "2000-04-04",
+                Nº_Documento = "3LA",
+            };
+            //Act
 
-            //return tabela;
+            // Inicializar conexão  & executar operação
+            var apreensaoRepositorio = new ApreensaoRepositorio(DBcontexto.CaminhoBD());
+            ApreensaoController apreensaoController = new ApreensaoController(apreensaoRepositorio);
+            apreensaoController.Change(apreensaoToSave.Descricao_Apreensao, apreensaoToSave.Data_Apreencao, apreensaoToSave.Nº_Documento);
+            DataRow tabelaEncontrada = apreensaoController.Find(apreensaoToSave.Nº_Documento).Rows[0];
 
+            //Assert
+            string resultdescricao = tabelaEncontrada["Descricao_Apreensao"].ToString();
+            Assert.Equal(apreensaoToSave.Descricao_Apreensao, resultdescricao);
         }
-           
+
+        [Fact]
+        [Trait("Apreensão", "metodo delete")]
+        public void Delete_DeveEliminar_UmaLinhaNaBD()
+        {
+            // Arrange
+            var apreensaoToSave = new Apreensao
+            {
+                Descricao_Apreensao = "Alterado",
+                Data_Apreencao = "2000-04-04",
+                Nº_Documento = "3LA",
+            };
+            //Act
+            // Inicializar conexão  & executar operação
+            var apreensaoRepositorio = new ApreensaoRepositorio(DBcontexto.CaminhoBD());
+            ApreensaoController apreensaoController = new ApreensaoController(apreensaoRepositorio);
+            apreensaoController.Delete(apreensaoToSave.Nº_Documento);
+            int NumeroDeTabelas_Encontradas = apreensaoController.Find(apreensaoToSave.Nº_Documento).Rows.Count;
+
+            //Assert
+            // string resultadoId = tabelaEncontrada["Id_Apreensao"].ToString();
+            Assert.True(NumeroDeTabelas_Encontradas == 0);
+        }
+
     }
 }
