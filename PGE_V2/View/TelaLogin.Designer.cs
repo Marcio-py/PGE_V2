@@ -50,7 +50,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Calibri", 11.25F, FontStyle.Bold);
             label1.ForeColor = Color.Teal;
-            label1.Location = new Point(460, 209);
+            label1.Location = new Point(503, 209);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(61, 18);
@@ -62,7 +62,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Calibri", 11.25F, FontStyle.Bold);
             label2.ForeColor = Color.Teal;
-            label2.Location = new Point(460, 265);
+            label2.Location = new Point(503, 265);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(46, 18);
@@ -73,7 +73,7 @@
             // 
             textLogin.BackColor = Color.Gray;
             textLogin.BorderStyle = BorderStyle.None;
-            textLogin.Location = new Point(583, 211);
+            textLogin.Location = new Point(626, 211);
             textLogin.Margin = new Padding(4, 3, 4, 3);
             textLogin.Multiline = true;
             textLogin.Name = "textLogin";
@@ -84,7 +84,7 @@
             // 
             TextSenha.BackColor = Color.Gray;
             TextSenha.BorderStyle = BorderStyle.None;
-            TextSenha.Location = new Point(583, 267);
+            TextSenha.Location = new Point(626, 267);
             TextSenha.Margin = new Padding(4, 3, 4, 3);
             TextSenha.Multiline = true;
             TextSenha.Name = "TextSenha";
@@ -97,7 +97,7 @@
             button1.BackColor = Color.Teal;
             button1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(608, 321);
+            button1.Location = new Point(651, 321);
             button1.Margin = new Padding(4, 3, 4, 3);
             button1.Name = "button1";
             button1.Size = new Size(88, 33);
@@ -111,7 +111,7 @@
             button2.BackColor = Color.FromArgb(224, 224, 224);
             button2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
             button2.ForeColor = Color.Teal;
-            button2.Location = new Point(608, 369);
+            button2.Location = new Point(651, 369);
             button2.Margin = new Padding(4, 3, 4, 3);
             button2.Name = "button2";
             button2.Size = new Size(88, 39);
@@ -123,9 +123,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = PGE_V2.Properties.Resources.Shape_sombreado;
-            pictureBox1.Location = new Point(-2, -307);
+            pictureBox1.Location = new Point(0, -3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(413, 877);
+            pictureBox1.Size = new Size(408, 522);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
@@ -133,7 +133,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = PGE_V2.Properties.Resources.group_694642;
-            pictureBox2.Location = new Point(583, 60);
+            pictureBox2.Location = new Point(626, 60);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(162, 109);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -144,7 +144,7 @@
             // 
             pictureBox3.BackColor = Color.Gray;
             pictureBox3.Image = PGE_V2.Properties.Resources.shield_508281;
-            pictureBox3.Location = new Point(555, 267);
+            pictureBox3.Location = new Point(598, 267);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(30, 21);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -155,7 +155,7 @@
             // 
             pictureBox4.BackColor = Color.Gray;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(555, 211);
+            pictureBox4.Location = new Point(598, 211);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(30, 23);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -178,7 +178,6 @@
             Controls.Add(textLogin);
             Controls.Add(label2);
             Controls.Add(label1);
-            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4, 3, 4, 3);
             Name = "TelaLogin";
             Text = "TelaLogin";

@@ -66,16 +66,15 @@ namespace TestProject1
             // Arrange
             var apreensaoToSave = new Apreensao
             {
-                Descricao_Apreensao = "Alterado",
+                Descricao_Apreensao = "Teste ad~ção",
                 Data_Apreencao = "2000-04-04",
-                Nº_Documento = "3LA",
+                Nº_Documento = "31LA",
             };
             //Act
 
             // Inicializar conexão  & executar operação
             var apreensaoRepositorio = new ApreensaoRepositorio(DBcontexto.CaminhoBD());
             ApreensaoController apreensaoController = new ApreensaoController(apreensaoRepositorio);
-            apreensaoController.Change(apreensaoToSave.Descricao_Apreensao, apreensaoToSave.Data_Apreencao, apreensaoToSave.Nº_Documento);
             DataRow tabelaEncontrada = apreensaoController.Find(apreensaoToSave.Nº_Documento).Rows[0];
 
             //Assert

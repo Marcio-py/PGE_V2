@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace PGE_V2.Repositorio
 {
-    public class UsuarioRepositorio : UsuarioInterface
+    public class UsuarioRepositorio 
     {
         // campo para pegar a conexão com a bd
         private readonly DBcontexto _contexto;

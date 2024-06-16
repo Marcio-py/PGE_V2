@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PGE_V2.Dados;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,50 +16,29 @@ namespace PGE_V2
     {
         SqlConnection conexao;
         SqlCommand comando;
-        SqlDataAdapter da;
-        //SqlDataReader dr;
+        SqlDataAdapter AdaptadorDados;
 
-        string strSQL;
         public CDU_DetalhesDetencao()
         {
             InitializeComponent();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
-
-                // consulta_Detento_EDocumento é procedimento traz dados da tabela dados pessoais, tipo documento e detençao
+                conexao = new SqlConnection(DBcontexto.CaminhoBD());
                 SqlCommand cmd = new SqlCommand("consulta_Detento_EDocumento", conexao);
                 cmd.CommandType = CommandType.StoredProcedure;
                 DataSet ds = new DataSet();
-
-                da = new SqlDataAdapter(cmd);
-
+                AdaptadorDados = new SqlDataAdapter(cmd);
                 conexao.Open();
-
-                da.Fill(ds);
-
+                AdaptadorDados.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
-
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conexao.Close();
-                conexao = null;
-                comando = null;
             }
         }
 
@@ -66,31 +46,18 @@ namespace PGE_V2
         {
             try
             {
-                conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
-
+                conexao = new SqlConnection(DBcontexto.CaminhoBD());
                 SqlCommand cmd = new SqlCommand("consulta_Apreensao_EDocumento", conexao);
                 cmd.CommandType = CommandType.StoredProcedure;
                 DataSet ds = new DataSet();
-
-                da = new SqlDataAdapter(cmd);
-
+                AdaptadorDados = new SqlDataAdapter(cmd);
                 conexao.Open();
-
-                da.Fill(ds);
-
+                AdaptadorDados.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
-
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conexao.Close();
-                conexao = null;
-                comando = null;
             }
         }
 
@@ -98,31 +65,18 @@ namespace PGE_V2
         {
             try
             {
-                conexao = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; ");
-
+                conexao = new SqlConnection(DBcontexto.CaminhoBD());
                 SqlCommand cmd = new SqlCommand("consulta_MultaDoCivil_EDocumento", conexao);
                 cmd.CommandType = CommandType.StoredProcedure;
                 DataSet ds = new DataSet();
-
-                da = new SqlDataAdapter(cmd); 
-
+                AdaptadorDados = new SqlDataAdapter(cmd); 
                 conexao.Open();
-
-                da.Fill(ds);
-
+                AdaptadorDados.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
-
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conexao.Close();
-                conexao = null;
-                comando = null;
             }
         }
     }

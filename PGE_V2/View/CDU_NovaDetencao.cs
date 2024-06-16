@@ -1,5 +1,6 @@
 ﻿using PGE_V2.Controler;
 using PGE_V2.Dados;
+using PGE_V2.Repositorio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -169,25 +170,38 @@ namespace PGE_V2
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-                if (valida_campos_detencao() == false || Verifica_SeExiste_NaBD(text_num_Bi.Text) == true )
-                {
-                    return;
+            // Inicializar conexão
+            var civilRepositorio = new CivilRepositorio(DBcontexto.CaminhoBD());
+            // executar operação
+            CivilController civilController = new CivilController(civilRepositorio);
+            int documentosRepetidos = civilController.Find(text_num_Bi.Text).Rows.Count;
+            if ( documentosRepetidos < 1)
+            {
+                civilController.Create(text_nome.Text,
+                    textBox1.Text,
+                    textBox2.Text,
+                    textBox3.Text,
+                    textBox3.Text, 1,
+                    text_num_Bi.Text);
+            }
 
-                }
+            //if (valida_campos_detencao() == false || Verifica_SeExiste_NaBD(text_num_Bi.Text) == true )
+            //    {
+            //        return;
 
-                UsuarioController.Salvar_DadosPessoais(
-                    text_num_Bi.Text, 
-                    text_nome.Text, textBox1.Text, 
-                    textBox2.Text, 
-                    textBox3.Text, 
-                    comboBoxGenero.Text);
+            //    }
+
+            //    UsuarioController.Salvar_DadosPessoais(
+            //        text_num_Bi.Text, 
+            //        text_nome.Text, textBox1.Text, 
+            //        textBox2.Text, 
+            //        textBox3.Text, 
+            //        comboBoxGenero.Text);
                 
-                int argumento_PesquisaDadosPessoais = UsuarioController.Pesquisar_IDDadosPessoais(text_num_Bi.Text);
-                UsuarioController.Salvar_Detencao(argumento_PesquisaDadosPessoais, txtDetalhes.Text);
-
-                UsuarioController.Salvar_Documento(text_num_Bi.Text, cmbTipoDocumento.Text);
-                MessageBox.Show("Adicionado um processo de detenção");
-                Limpa_Campos();
+            //    int argumento_PesquisaDadosPessoais = UsuarioController.Pesquisar_IDDadosPessoais(text_num_Bi.Text);
+            //    UsuarioController.Salvar_Documento(text_num_Bi.Text, cmbTipoDocumento.Text);
+            //    MessageBox.Show("Adicionado um processo de detenção");
+            //    Limpa_Campos();
             }
         }
     }

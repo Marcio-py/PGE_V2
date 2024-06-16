@@ -15,10 +15,10 @@ namespace PGE_V2.Modelos
         public string Filho_de { get; set; }
         public string E_de { get; set; }
         //public string? Image { get; set; }
-        public DateTime? Data_Nasc { get; set; }
-        public int? Genero { get; set; }
-        public string? Id_Endereco { get; set; }
-        public int? Nº_BI { get; set; }
+        public string? Data_Nasc { get; set; }
+        public string? Genero { get; set; }
+        public int? Id_Endereco { get; set; }
+        public string? Nº_BI { get; set; }
 
     }
 }

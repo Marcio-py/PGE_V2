@@ -12,16 +12,14 @@ namespace PGE_V2.Controler
 {
     public class UsuarioController
     {
-        
-        private readonly UsuarioInterface _UsuarioRepository;
-
         public static void Salvar_DadosPessoais(string Nº_BI, string Nome_Completo, string Filho_de, string E_de,string Data_nasc, string Genero)
         {
             SqlConnection connectionString = new SqlConnection("Server=DESKTOP-Q4CIO9V\\SQLEXPRESS;Database=Sistema_Gestao_Esquadra;Trusted_Connection=True; "); ;
             SqlCommand comando;
             string strSQL;
 
-            strSQL = "INSERT INTO Dados_Pessoais (Nº_BI, Nome_Completo, Filho_de, E_de, Data_nasc, Genero) VALUES (@Nº_BI, @Nome_Completo, @Filho_de, @E_de, @Data_nasc, @Genero)";
+            strSQL = "INSERT INTO Dados_Pessoais (Nº_BI, Nome_Completo, Filho_de, E_de, Data_nasc, Genero)" +
+                "VALUES (@Nº_BI, @Nome_Completo, @Filho_de, @E_de, @Data_nasc, @Genero)";
             comando = new SqlCommand(strSQL, connectionString);
 
             comando.Parameters.AddWithValue("@Nº_BI", Nº_BI);
